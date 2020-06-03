@@ -21,15 +21,13 @@
   {\endminipage\par\medskip}
   
 \usepackage{titlesec}
-\titleformat
-{\subsection}
+\titleformat{\section}
+  {\normalfont\sffamily\Huge\bfseries}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
   {\normalfont\sffamily\large\bfseries}
   {\thesubsection}{1em}{}
-\titleformat{\section}
-  {\normalfont\sffamily\Huge\bfseries\flushright}
-  {}{1em}{}
-\titleformat
-{\subsubsection}
+\titleformat{\subsubsection}
   {\sffamily\bfseries}
   {\thesubsubsection}{1em}{}
   
@@ -61,12 +59,10 @@
 \begin{document}
 
     \input{Sections/title_page.tex}
-    \blankpage
+    \pagebreak
     \input{Sections/layabstract.tex}
-    \blankpage
     \input{Sections/abstract.tex}\label{abstr}
     \pagebreak
-    \blankpage
     \tableofcontents\label{conte}
     \pagebreak
     
