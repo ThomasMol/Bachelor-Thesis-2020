@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{lipsum}
+\usepackage[a4paper,width=160mm,top=25mm,bottom=25mm]{geometry}
+\usepackage{multicol}
+\setlength{\columnsep}{0.7cm}
+\linespread{1.15}
+\usepackage{gensymb}
+\usepackage{stfloats}
+\def\blankpage{
+  \clearpage
+  \thispagestyle{empty}
+  \addtocounter{page}{-1}
+  \null
+  \clearpage
+}
+
+\newenvironment{Figure}
+  {\par\medskip\noindent\minipage{\linewidth}}
+  {\endminipage\par\medskip}
+  
+\usepackage{titlesec}
+\titleformat
+{\subsection}
+  {\normalfont\sffamily\large\bfseries}
+  {\thesubsection}{1em}{}
+\titleformat{\section}
+  {\normalfont\sffamily\Huge\bfseries\flushright}
+  {}{1em}{}
+\titleformat
+{\subsubsection}
+  {\sffamily\bfseries}
+  {\thesubsubsection}{1em}{}
+  
+\titlespacing{\section}{0pt}{1cm}{3cm}
+
+\usepackage{tocloft}
+\renewcommand{\cftsecfont}{\sffamily\bfseries}
+\renewcommand{\cfttoctitlefont}{\sffamily\bfseries\Large}
+
+\usepackage{graphicx}
+\graphicspath{{Images/}}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{float}
+\captionsetup[figure]{labelfont={bf,sf,small},textfont={sf,small}}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[C]{}
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+
+\usepackage[citestyle=apa,stylename=authoryear]{biblatex}
+
+\addbibresource{references.bib}
+\begin{document}
+
+    \input{Sections/title_page.tex}
+    \blankpage
+    \input{Sections/layabstract.tex}
+    \blankpage
+    \input{Sections/abstract.tex}\label{abstr}
+    \pagebreak
+    \blankpage
+    \tableofcontents\label{conte}
+    \pagebreak
+    
+        \section{Introduction}\label{intro}
+        \begin{multicols}{2}
+        \input{Sections/introduction.tex}
+        \end{multicols}
+        \pagebreak
+        \twocolumn[
+        \section{Related Literature}\label{theor}
+        ]
+        \input{Sections/related_literature.tex}
+        \pagebreak
+        \twocolumn[
+        \section{Methodology}\label{methd}
+        ]
+        \input{Sections/methodology.tex}
+        \pagebreak
+        \twocolumn[
+        \section{Experiment Results}\label{resul}
+        ]
+        \input{Sections/emperiment_results.tex}
+        \pagebreak
+        \onecolumn
+        \section{Conclusion \& Discussion}\label{concl}
+        \input{Sections/conclusion_and_discussion.tex}
+        \pagebreak
+    \thispagestyle{plain}
+    \printbibliography[heading=bibintoc,title={References}]
+    \pagebreak
+    
+    
+\end{document}
