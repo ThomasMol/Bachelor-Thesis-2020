@@ -1,16 +1,33 @@
 \subsection{The Data Set}
-For modelling and experimenting we relied on a publicly available dataset which contains 10,000 video clips with audio with an average duration of 15 seconds. The clips are collected from over 3000 videos available on YouTube. The videos are annotated with the use of Amazon Mechanical Turk for apparent personality traits. These are the 5 OCEAN personality traits variables. Annotators saw a pair of video clips and were asked to assign an attribute to one of the videos with the option to not assign an attribute at all. These attributes are words describing the 5 OCEAN personality traits. 
+For modelling and experimenting we relied on a publicly available data-set which contains 10,000 video clips with audio with an average duration of 15 seconds. The clips are collected from over 3000 videos available on YouTube. The videos are annotated with the use of Amazon Mechanical Turk for apparent personality traits. These are the 5 OCEAN personality traits variables. Annotators saw a pair of video clips and were asked to assign an attribute to one of the videos with the option to not assign an attribute at all. These attributes are words describing the 5 OCEAN personality traits. 
 
-Furthermore, the videos are annotated for an additional variable, which is the interview variable. This variable measures whether a candidate should be invited for a job interview or not. (lopez et al 2016 for more). Additionally these videos are annotated for ethnicity groups, age groups and gender. (see table for ethnicity group and age group and gender definitions). From this dataset of 10,000 videos the first 960 were selected for experimenting and further annotations of three more variables. 
+Furthermore, the videos are annotated for an additional variable, which is the interview variable. This variable measures whether a candidate should be invited for a job interview or not. (lopez et al 2016 for more). Additionally these videos are annotated for ethnicity groups, age groups and gender. (see table for ethnicity group and age group and gender definitions). From this data-set of 10,000 videos the first 960 were selected for experimenting and further annotations of three more variables. 
 
 \subsection{Annotating Data}
-The selected 960 video clips were annotated additionally for mood primites, likeability and a variable describing the presence of background music. The mood primitives, valence and arousal, and likeability were annotated with an ordinal scale with 3 classes. An annotation of class 1 means the variable scored low or negatively, class 2 is the neutral case, and class 3 means the variable scored high or positively. Initially the scale was set with 5 classes, however annotations with class 1 or class 5 were scarce so a smaller scale was chosen to improve the accuracy of the models. 
+The selected 960 video clips were annotated additionally for mood primitives, likeability and a variable describing the presence of background music. The mood primitives, valence and arousal, and likeability were annotated with an ordinal scale with 3 classes. An annotation of class 1 means the variable scored low or negatively, class 2 is the neutral case, and class 3 means the variable scored high or positively. Initially the scale was set with 5 classes, however annotations with class 1 or class 5 were scarce so a smaller scale was chosen to improve the accuracy of the models. 
 
-Two annotators annotated the same 960 video clips for these 4 dimensions. 
+Two annotators annotated the same 960 video clips for these 4 dimensions. After which, the annotations were merged to create two additional data-sets. One data-set used the minimum of the two annotation, while the second one used the maximum of the two annotations. As a result, there were now 4 sets of annotations available to use and model classifiers with.
 
-To measure the inter-rater reliability between the two annotators the Cohen's kappa coefficient was calculated. This coefficient is considered more robust as it takes into account the occurrence of an agreement by chance. The resulting coefficient will determine whether the agreement is accidental or not. Table x shows the results of the Cohen's kappa calculations. The observed agreement (po) is the number of agreements divided by the total of number items. The random agreement (pe) is the probability that the annotators agreed on either of the possible annotations. Using the observed and random agreement the Cohen's kappa can be calculated. The coefficient ranges from 0 to 1 and can be interpreted as shown in table x.
+To measure the inter-rater reliability between the two annotators the Cohen's kappa coefficient was calculated. This coefficient is considered more robust as it takes into account the occurrence of an agreement by chance. The resulting coefficient will determine whether the agreement is accidental or not. Table x shows the results of the Cohen's kappa calculations. The observed agreement (po) is the number of agreements divided by the total of number items. The random agreement (pe) is the probability that the annotators agreed on either of the possible annotations. Using the observed and random agreement the Cohen's kappa can be calculated. The coefficient ranges from 0 to 1 and can be interpreted as shown in table \ref{tab:cohenkappainterpret}.
 
-Since Cohen's kappa takes into account the disagreement but not the degree of disagreement a modified version of Cohen's kappa can be used which is the weighted Cohen's kappa (cohen 1968). This can be applied well if an ordinal scale is used for the ratings. Since the annotations of the dataset use an ordinal scale, the weighted Cohen's kappa can be applied. The weighted kappa is calculated with the use of a table containing weights which measure the degree of disagreement. This can be linear or quadratic. Table x shows the results of the weighted Cohen's kappa alongside the unweighted versions. 
+\begin{table}[]
+\begin{tabular}{|p{3cm}|p{3cm}|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+{\color[HTML]{41474D} Cohen's Kappa score} & {\color[HTML]{41474D} Agreement}                      \\ \hline
+{\color[HTML]{41474D} 0}                   & {\color[HTML]{41474D} Agreement equivalent to chance} \\
+{\color[HTML]{41474D} 0.10 - 0.20}         & {\color[HTML]{41474D} Slight}                         \\
+{\color[HTML]{41474D} 0.21 - 0.40}         & {\color[HTML]{41474D} Fair}                           \\
+{\color[HTML]{41474D} 0.41 - 0.60}         & {\color[HTML]{41474D} Moderate}                       \\
+{\color[HTML]{41474D} 0.61 - 0.80}         & {\color[HTML]{41474D} Substantial}                    \\
+{\color[HTML]{41474D} 0.81 - 0.99}         & {\color[HTML]{41474D} Near perfect}                   \\
+{\color[HTML]{41474D} 1}                   & {\color[HTML]{41474D} Perfect}                        \\ \hline
+\end{tabular}
+\caption{Cohen's kappa agreement interpretation}
+\label{tab:cohenkappainterpret}
+\end{table}
+
+Since Cohen's kappa takes into account the disagreement but not the degree of disagreement a modified version of Cohen's kappa can be used which is the weighted Cohen's kappa (cohen 1968). This can be applied well if an ordinal scale is used for the ratings. Since the annotations of the data-set use an ordinal scale, the weighted Cohen's kappa can be applied. The weighted kappa is calculated with the use of a table containing weights which measure the degree of disagreement. This can be linear or quadratic. Table x shows the results of the weighted Cohen's kappa alongside the unweighted versions. 
 
 Overall, every dimension shows a moderate agreement when quadratic weighting is applied. Further, for every dimension and weight the null hypothesis is rejected, where the null hypothesis is that the observed agreement is accidental. Therefore it is safe to say the inter-rater reliability is higher than chance level. 
 
@@ -18,9 +35,22 @@ The data was then split up in a train set of 660 video clips and a test set of 3
 
 \subsection{Video Feature Extraction}
 
-\subsection{Feature Normalization}
-Z normalization transforms the input vector into a vector where the mean is 0 or very close to 0 while the standard deviation is close to 1. The number for a single data point of the computed output vector can also be called the z-score. This score essentially is the number of standard deviations a vector is away from the mean. It can indicate how familiar a data point is relative to the others. 
+\subsection{Feature Normalisation}
+Z normalisation transforms the input vector into a vector where the mean is 0 or very close to 0 while the standard deviation is close to 1. The number for a single data point of the computed output vector can also be called the z-score. This score essentially is the number of standard deviations a vector is away from the mean. It can indicate how familiar a data point is relative to the others. 
 
-While Z normalization is applied at feature level L2 normalization is applied at feature vector level. L2 normalization is applied at each row of the feature set so that if the values are squared and then summed, they add up to exactly 1. 
+While Z normalisation is applied at feature level L2 normalisation is applied at feature vector level. L2 normalisation is applied at each row of the feature set so that if the values are squared and then summed, they add up to exactly 1. 
 
-Figure x shows the flowchart of the normalization steps that were applied at feature and vector level. The combination of Z normalization and L2 normalization increased performance on most models. Applying only L2 normalization also increased accuracy scores while no normalization at all performed the worst. 
+Figure x shows the flowchart of the normalisation steps that were applied at feature and vector level. The combination of Z normalisation and L2 normalisation increased performance on most models. Applying only L2 normalisation also increased accuracy scores while no normalisation at all performed the worst. 
+
+\subsection{Classification}
+Several types of models were used for classification from the extracted video features. These models include:
+\begin{enumerate}
+\item Kernel Extreme Learning Machines (KELM)
+\item Support Vector Machines (SVM)
+\item Decision Trees (DT)
+\end{enumerate}
+
+
+
+
+

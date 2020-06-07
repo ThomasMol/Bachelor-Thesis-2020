@@ -4,10 +4,15 @@
 \usepackage{lipsum}
 \usepackage[a4paper,width=160mm,top=25mm,bottom=25mm]{geometry}
 \usepackage{multicol}
-\setlength{\columnsep}{0.7cm}
-\linespread{1.15}
+\setlength{\columnsep}{0.8cm}
+\linespread{1.2}
 \usepackage{gensymb}
 \usepackage{stfloats}
+
+\usepackage{array} % for defining a new column type
+\usepackage{varwidth} %for the varwidth minipage environment
+
+
 \def\blankpage{
   \clearpage
   \thispagestyle{empty}
@@ -46,6 +51,8 @@
 \usepackage{float}
 \captionsetup[figure]{labelfont={bf,sf,small},textfont={sf,small}}
 
+\usepackage[table,xcdraw]{xcolor}
+
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhead{}
@@ -53,10 +60,12 @@
 \fancyfoot{}
 \fancyfoot[C]{\thepage}
 
-\usepackage[citestyle=apa,stylename=authoryear]{biblatex}
+\usepackage[backend=biber, style=numeric, citestyle=authoryear]{biblatex}
 
 \addbibresource{references.bib}
+
 \begin{document}
+\newcolumntype{M}{>{\begin{varwidth}{4cm}}l<{\end{varwidth}}} %M is for Maximal column
 
     \input{Sections/title_page.tex}
     \pagebreak

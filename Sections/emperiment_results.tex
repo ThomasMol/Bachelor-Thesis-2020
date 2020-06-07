@@ -1,0 +1,67 @@
+This section will provide, analyse and discuss the results of the annotations and of the experiments done with the data-set. First, general statistics will be provided regarding the mood and likeability annotations. Then the new annotations in conjunction with the interview variable will be analysed to identify any statistical relationship. Next, we will provide the results of the experiments. The performance of the models created during the experiments will be expressed in their Unweighted Average Recall or UAR. The UAR is the mean of the recall scores of each class. The recall is the ratio between the number of true positives and false negatives. If all predictions would be correctly classified the UAR would be 1. The UAR metric  is a better indication of prediction capacity than precision accuracy as our data-set is imbalanced. The UAR does not favour the majority class and is therefore a better indicator of the prediction capabilities of our models.
+\break
+
+\subsection{Annotation Analysis}
+As described in the methodology, 960 video clips of the data-set were annotated for the Big Five personality traits, two mood primitives (valence and arousal), likeability, background music and the interview variable. The personality and interview dimensions were annotated using Amazon Mechanical Turk. All dimensions, with the exception of background music, were annotated for apparent presence or absence. The interview variable indicates whether the annotator would invite the subject to an interview or not. Table \ref{tab:personcount} and table \ref{tab:goldcount} show the number of annotations for each class and dimension. 
+
+The apparent personality trait and interview dimensions were post-processed to create cardinal scores for each video clip (\cite{escalante2018explaining}). These scores were also binarized by taking the mean of each dimension and assigning a 2 if the score was equal or higher than the mean and assigning a 1 if the score was lower than the mean. Table \ref{tab:personcount} shows the number of annotations based on the binarized data-set. 
+
+\begin{table}[h]
+\begin{tabular}{|r|r|r|r|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{1}{|l|}{\cellcolor[HTML]{C0C0C0}Class} &
+  \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Arousal} &
+  \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Valence} &
+  \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Likeability} \\ \hline
+1                           & 77  & 46  & 99  \\
+2                           & 364 & 707 & 505 \\
+3                           & 519 & 207 & 356 \\ \hline
+\multicolumn{1}{|l|}{Total} & 960 & 960 & 960 \\ \hline
+\end{tabular}
+\caption{Number of annotations (self) per class of the mood primitive and likeability dimensions}
+\label{tab:selfcount}
+\end{table}
+
+\begin{table}[h]
+\begin{tabular}{|r|r|r|r|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\multicolumn{1}{|l|}{\cellcolor[HTML]{C0C0C0}Class} &
+  \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Arousal} &
+  \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Valence} &
+  \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Likeability} \\ \hline
+1                           & 108 & 82  & 197 \\
+2                           & 593 & 705 & 602 \\
+3                           & 259 & 173 & 161 \\ \hline
+\multicolumn{1}{|l|}{Total} & 960 & 960 & 960 \\ \hline
+\end{tabular}
+\caption{Number of annotations (gold min) per class of the mood primitive and likeability dimensions}
+\label{tab:goldcount}
+\end{table}
+
+\begin{table*}[h]
+\begin{tabular}{|r|r|r|r|r|r|r|}
+\hline
+\rowcolor[HTML]{C0C0C0} Class &
+  \multicolumn{1}{l|}{Openness} &
+  \multicolumn{1}{l|}{Conscientiousness} &
+  \multicolumn{1}{l|}{Extraversion} &
+  \multicolumn{1}{l|}{Agreeableness} &
+  \multicolumn{1}{l|}{Neuroticism} &
+  \multicolumn{1}{c|}{Interview Invitation} \\ \hline
+1     & 528 & 458 & 443 & 437 & 441 & 426 \\ \hline
+2     & 432 & 502 & 517 & 523 & 519 & 534 \\ \hline
+Total & 960 & 960 & 960 & 960 & 960 & 960 \\ \hline
+\end{tabular}
+\caption{Number of annotations per class of apparent personality trait and interview invitation dimensions}
+\label{tab:personcount}
+\end{table*}
+
+\subsection{Statistical Relationships}
+
+Some interesting statistical experiments can be done regarding the statistical relationship of the mood primitives and likeability dimensions and the interview invitation. For these experiments we will use the cardinal values of the interview variable. 
+
+\subsection{Mood and Likeability Model Experiments}
+
+\subsection{Personality Trait experiments}
