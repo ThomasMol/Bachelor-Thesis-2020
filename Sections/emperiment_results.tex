@@ -45,11 +45,11 @@ The apparent personality trait and interview dimensions were post-processed to c
 \hline
 \rowcolor[HTML]{C0C0C0} Class &
   \multicolumn{1}{l|}{Openness} &
-  \multicolumn{1}{l|}{Conscientiousness} &
+  \multicolumn{1}{P{2cm}|}{Conscientiousness} &
   \multicolumn{1}{l|}{Extraversion} &
-  \multicolumn{1}{l|}{Agreeableness} &
+  \multicolumn{1}{P{2cm}|}{Agreeableness} &
   \multicolumn{1}{l|}{Neuroticism} &
-  \multicolumn{1}{c|}{Interview Invitation} \\ \hline
+  \multicolumn{1}{P{2cm}|}{Interview Invitation} \\ \hline
 1     & 528 & 458 & 443 & 437 & 441 & 426 \\ \hline
 2     & 432 & 502 & 517 & 523 & 519 & 534 \\ \hline
 Total & 960 & 960 & 960 & 960 & 960 & 960 \\ \hline
@@ -86,7 +86,7 @@ Some interesting statistical experiments can be done regarding the statistical r
 However, to see if there is a correlation between the interview variable and mood and likeability variables we must look at the Spearman's Rank-Order Correlation coefficient. This coefficient can used to calculate correlation for ordinal categorical variables. To calculate this coefficient we will be using the binarized data-set of the interview variable. The coefficient is calculated as follows: \(\rho = \frac{cov(x,y)}{\sigma_x \sigma_y}\), where \(cov(x,y)\) is the covariance of the variables and \(\rho\) is the Pearson correlation coefficient. Table \ref{tab:spearman} shows the correlation and p value between the three dimensions and the binarized interview variable. The results show a low p value for all dimensions, with every p value being close to 0. This means that the null hypothesis should be rejected, where the null hypothesis is that two sets of data are uncorrelated. By rejected the null hypothesis we can conclude that the sets of data are not uncorrelated, however it does not prove that they are correlated. If we look at table \ref{tab:spearman} we can see that the correlation values are between 0.2 and 0.4. For the arousal dimension this means that the strength of the correlation is small, while for the valence and likeability dimensions there is medium strong correlation. A perfect correlation would be indicated with a value of 1 or -1 (for a negative correlation). Typically, a correlation is considered strong if the value is higher than 0.7 or lower than -0.7. 
 
 \begin{table}[h]
-\begin{tabular}{|l|r|r|r|}
+\begin{tabular}{|P{1cm}|r|r|r|}
 \hline
 \rowcolor[HTML]{C0C0C0} 
  & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Arousal} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Valence} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Likeability} \\ \hline
@@ -98,13 +98,13 @@ P Value & 6.51E-21 & 1.76E-10 & 3.09E-37 \\ \hline
 \end{table}
 
 \subsection{Mood and Likeability Model Experiments}
-In this section we will discuss the performance of the models that are trained using the mood and likeability dimensions and the extracted video features. As stated in the methodology the data-set was split into a training set of 660 rows and a test set of 300 rows. Both the self annotation and the gold standard annotations were used for training the classifiers. Models using ELMs and SVMs wer
+In this section we will discuss the performance of the models that are trained using the mood and likeability dimensions and the extracted video features. As stated in the methodology the data-set was split into a training set of 660 rows and a test set of 300 rows. Both the self annotation and the gold standard annotations were used for training the classifiers. Both the SVM and ELM algorithms as described in section \ref{subsection:classificaiton} were used to the train models. Table \ref{tab:lkelm} shows the results in UAR of the trained ELM models. A linear kernel was used to train these models. Also, hyperparameters, like the C parameter, were optimized to achieve the best scores. The highest score of each dimension is highlighted bold. The normalization column refers to what type of normalization was applied to the feature set. "NN" stands for no normalization, "ZN" for z normalization and "L2" stands for l2 normalization. These are the normalization techniques as described in section \ref{subsection:normalization}. As the results show, the best results of each dimension is higher than 33\%. Which indicates that the models are more accurate than chance level. Chance level is 33\% in the case of our data-set as the dimensions are labeled with three different classes. Further, the results for the weighted ELM are higher than non-weighted ELM for all dimensions. Also, the gold standard annotation dimensions score higher than the self annotated labels. This implies that more annotators are needed for the same data to increase the performance of the models. 
 
 \begin{table*}[h]
-\begin{tabular}{|l|l|r|r|r|r|r|r|}
+\begin{tabular}{|l|P{2cm}|r|r|r|r|r|r|}
 \hline
 \rowcolor[HTML]{C0C0C0} 
-\textbf{Weighted} & \textbf{Normalization} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{self\_arousal}} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{gold\_arousal}} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{self\_valence}} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{gold\_valence}} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{self\_like}} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{gold\_like}} \\ \hline
+\textbf{Weighted} & \textbf{Normalization} & \multicolumn{1}{P{1.5cm}|}{\cellcolor[HTML]{C0C0C0}\textbf{self aro}} & \multicolumn{1}{P{1.5cm}|}{\cellcolor[HTML]{C0C0C0}\textbf{gold aro}} & \multicolumn{1}{P{1.5cm}|}{\cellcolor[HTML]{C0C0C0}\textbf{self val}} & \multicolumn{1}{P{1.5cm}|}{\cellcolor[HTML]{C0C0C0}\textbf{gold val}} & \multicolumn{1}{P{1.5cm}|}{\cellcolor[HTML]{C0C0C0}\textbf{self like}} & \multicolumn{1}{P{1.5cm}|}{\cellcolor[HTML]{C0C0C0}\textbf{gold like}} \\ \hline
 \textbf{No} & \textbf{NN} & \cellcolor[HTML]{FFE2E2}39.79\% & \cellcolor[HTML]{FFAEAE}42.67\% & \cellcolor[HTML]{FFF9E7}47.91\% & \cellcolor[HTML]{FFF9E9}47.78\% & \cellcolor[HTML]{FFFFFF}38.47\% & \cellcolor[HTML]{D1EDDF}42.61\% \\ \hline
 \textbf{No} & \textbf{ZN} & \cellcolor[HTML]{FF9B9B}43.76\% & \cellcolor[HTML]{FF2E2E}49.88\% & \cellcolor[HTML]{FFF4D5}49.11\% & \cellcolor[HTML]{FFFFFF}46.21\% & \cellcolor[HTML]{6DC499}51.56\% & \cellcolor[HTML]{88CFAD}49.11\% \\ \hline
 \textbf{No} & \textbf{L2} & \cellcolor[HTML]{FFE1E1}39.80\% & \cellcolor[HTML]{FFB2B2}42.49\% & \cellcolor[HTML]{FFFAEC}47.53\% & \cellcolor[HTML]{FFFCF1}47.19\% & \cellcolor[HTML]{F0F9F5}39.84\% & \cellcolor[HTML]{CAEADA}43.25\% \\ \hline
@@ -114,8 +114,26 @@ In this section we will discuss the performance of the models that are trained u
 \textbf{Yes} & \textbf{L2} & \cellcolor[HTML]{FFFFFF}38.11\% & \cellcolor[HTML]{FF1919}51.08\% & \cellcolor[HTML]{FFF3D2}49.36\% & \cellcolor[HTML]{FFD666}\textbf{56.77\%} & \cellcolor[HTML]{66C195}52.18\% & \cellcolor[HTML]{57BB8A}\textbf{53.49\%} \\ \hline
 \textbf{Yes} & \textbf{ZN+L2} & \cellcolor[HTML]{FF9898}43.91\% & \cellcolor[HTML]{FF0202}52.37\% & \cellcolor[HTML]{FFF1C8}50.05\% & \cellcolor[HTML]{FFE8A6}52.38\% & \cellcolor[HTML]{5CBD8E}53.08\% & \cellcolor[HTML]{7BCAA3}50.35\% \\ \hline
 \end{tabular}
-\caption{Linear Kernel Extreme Learning Machine model performance results expressed in UAR}
+\caption{Linear Kernel Extreme Learning Machine model performance results expressed in UAR. "aro": arousal, "val": valence, "like": likeability.}
 \label{tab:lkelm}
 \end{table*}
+
+The results of the SVM models trained using the extracted video features are shown in table \ref{tab:svm}. Again, the results are expressed in their UAR, and the highest score for each dimension is highlighted in bold. The results show moderately good performance. The highest scores for each dimension is higher than chance level, but they are slightly worse than the ELM models. 
+
+\begin{table*}[h]
+\begin{tabular}{|l|r|r|r|r|r|r|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Normalization} & \multicolumn{1}{P{1.5cm}|}{\cellcolor[HTML]{C0C0C0}\textbf{self aro}} & \multicolumn{1}{P{1.5cm}|}{\cellcolor[HTML]{C0C0C0}\textbf{gold aro}} & \multicolumn{1}{P{1.5cm}|}{\cellcolor[HTML]{C0C0C0}\textbf{self val}} & \multicolumn{1}{P{1.5cm}|}{\cellcolor[HTML]{C0C0C0}\textbf{gold val}} & \multicolumn{1}{P{1.5cm}|}{\cellcolor[HTML]{C0C0C0}\textbf{self like}} & \multicolumn{1}{P{1.5cm}|}{\cellcolor[HTML]{C0C0C0}\textbf{gold like}} \\ \hline
+\textbf{NN} & \cellcolor[HTML]{FFE1E1}42.86\% & \cellcolor[HTML]{FF0000}\textbf{49.05\%} & \cellcolor[HTML]{FFDD7F}49.66\% & \cellcolor[HTML]{FFE7A3}47.92\% & \cellcolor[HTML]{E1F3EA}41.90\% & \cellcolor[HTML]{70C69C}47.25\%  \\ \hline
+\textbf{ZN} & \cellcolor[HTML]{FFBBBB}\textbf{43.90\%} & \cellcolor[HTML]{FF2020}48.18\% & \cellcolor[HTML]{FFFFFD}43.57\% & \cellcolor[HTML]{FFFFFF}43.47\% & \cellcolor[HTML]{C3E7D6}\textbf{43.29\%} & \cellcolor[HTML]{57BB8A}\textbf{48.44\%}  \\ \hline
+\textbf{L2} & \cellcolor[HTML]{FFD6D6}43.16\% & \cellcolor[HTML]{FF0E0E}48.68\% & \cellcolor[HTML]{FFD666}\textbf{50.83\%} & \cellcolor[HTML]{FFE59D}\textbf{48.22\%} & \cellcolor[HTML]{FFFFFF}40.42\% & \cellcolor[HTML]{9BD7BA}45.20\% \\ \hline
+\textbf{ZN+L2} & \cellcolor[HTML]{FFFFFF}42.01\% & \cellcolor[HTML]{FF6D6D}46.06\% & \cellcolor[HTML]{FFF6DB}45.23\% & \cellcolor[HTML]{FFF9E7}44.66\% & \cellcolor[HTML]{F6FCF9}40.86\% & \cellcolor[HTML]{67C295}47.71\%  \\ \hline
+\end{tabular}
+\caption{Support Vector Machine model performance results expressed in UAR. "aro": arousal, "val": valence, "like": likeability.}
+\label{tab:svm}
+\end{table*}
+
+Other types of kernels, like the RBF and sigmoid kernel, were explored for the ELM and SVM models. However, these models performed worse on all dimensions compared to the linear models. 
 
 \subsection{Personality Trait experiments}

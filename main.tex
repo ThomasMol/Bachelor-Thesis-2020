@@ -63,6 +63,8 @@
 \fancyfoot[C]{\thepage}
 
 \usepackage[backend=biber, style=numeric, citestyle=authoryear]{biblatex}
+\newcolumntype{P}[1]{>{\hspace{0pt}}p{#1}}
+
 
 \addbibresource{references.bib}
 
@@ -72,33 +74,33 @@
     \input{Sections/title_page.tex}
     \pagebreak
     \input{Sections/layabstract.tex}
-    \input{Sections/abstract.tex}\label{abstr}
+    \input{Sections/abstract.tex}\label{section:abstract}
     \pagebreak
-    \tableofcontents\label{conte}
+    \tableofcontents\label{section:contents}
     \pagebreak
     
-        \section{Introduction}\label{intro}
+        \section{Introduction}\label{section:introduction}
         \begin{multicols}{2}
         \input{Sections/introduction.tex}
         \end{multicols}
         \pagebreak
         \twocolumn[
-        \section{Related Literature}\label{theor}
+        \section{Related Literature}\label{section:literature}
         ]
         \input{Sections/related_literature.tex}
         \pagebreak
         \twocolumn[
-        \section{Methodology}\label{methd}
+        \section{Methodology}\label{section:methodology}
         ]
         \input{Sections/methodology.tex}
         \pagebreak
         \twocolumn[
-        \section{Experiment Results}\label{resul}
+        \section{Experiment Results}\label{section:results}
         ]
         \input{Sections/emperiment_results.tex}
         \pagebreak
         \onecolumn
-        \section{Conclusion \& Discussion}\label{concl}
+        \section{Conclusion \& Discussion}\label{section:discussion}
         \input{Sections/conclusion_and_discussion.tex}
         \pagebreak
     \thispagestyle{plain}
