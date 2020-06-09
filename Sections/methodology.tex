@@ -1,5 +1,5 @@
 \subsection{The Data Set}
-For modelling and experimenting we relied on a publicly available data-set which contains 10,000 video clips with audio with an average duration of 15 seconds. The clips are collected from over 3000 videos available on YouTube. The videos are annotated with the use of Amazon Mechanical Turk for apparent personality traits. These are the 5 OCEAN personality traits variables. Annotators saw a pair of video clips and were asked to assign an attribute to one of the videos with the option to not assign an attribute at all. These attributes are words describing the 5 OCEAN personality traits. 
+For modeling and experimenting we relied on a publicly available data-set which contains 10,000 video clips with audio with an average duration of 15 seconds. The clips are collected from over 3000 videos available on YouTube. The videos are annotated with the use of Amazon Mechanical Turk for apparent personality traits. These are the 5 OCEAN personality traits variables. Annotators saw a pair of video clips and were asked to assign an attribute to one of the videos with the option to not assign an attribute at all. These attributes are words describing the 5 OCEAN personality traits. 
 
 Furthermore, the videos are annotated for an additional variable, which is the interview variable. This variable measures whether a candidate should be invited for a job interview or not. (lopez et al 2016 for more). Additionally these videos are annotated for ethnicity groups, age groups and gender. (see table for ethnicity group and age group and gender definitions). From this data-set of 10,000 videos the first 960 were selected for experimenting and further annotations of three more variables. 
 
@@ -35,17 +35,18 @@ The data was then split up in a train set of 660 video clips and a test set of 3
 
 \subsection{Video Feature Extraction}
 
-\subsection{Feature Normalisation}
-Z normalisation transforms the input vector into a vector where the mean is 0 or very close to 0 while the standard deviation is close to 1. The number for a single data point of the computed output vector can also be called the z-score. This score essentially is the number of standard deviations a vector is away from the mean. It can indicate how familiar a data point is relative to the others. 
+\subsection{Feature Normalization}
+\label{section:normalization}
+Z normalization transforms the input vector into a vector where the mean is 0 or very close to 0 while the standard deviation is close to 1. The number for a single data point of the computed output vector can also be called the z-score. This score essentially is the number of standard deviations a vector is away from the mean. It can indicate how familiar a data point is relative to the others. 
 
-While Z normalisation is applied at feature level L2 normalisation is applied at feature vector level. L2 normalisation is applied at each row of the feature set so that if the values are squared and then summed, they add up to exactly 1. 
+While Z normalization is applied at feature level L2 normalization is applied at feature vector level. L2 normalization is applied at each row of the feature set so that if the values are squared and then summed, they add up to exactly 1. 
 
-Figure x shows the flowchart of the normalisation steps that were applied at feature and vector level. The combination of Z normalisation and L2 normalisation increased performance on most models. Applying only L2 normalisation also increased accuracy scores while no normalisation at all performed the worst. 
+Figure x shows the flowchart of the normalization steps that were applied at feature and vector level. The combination of Z normalization and L2 normalization increased performance on most models. Applying only L2 normalization also increased accuracy scores while no normalization at all performed the worst. 
 
 \subsection{Classification}
 Several types of models were used for classification from the extracted video features. These models include:
 \begin{enumerate}
-\item Kernel Extreme Learning Machines (KELM)
+\item Extreme Learning Machines (ELM)
 \item Support Vector Machines (SVM)
 \item Decision Trees (DT)
 \end{enumerate}

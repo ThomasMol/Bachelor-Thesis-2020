@@ -1,4 +1,4 @@
-This section will provide, analyse and discuss the results of the annotations and of the experiments done with the data-set. First, general statistics will be provided regarding the mood and likeability annotations. Then the new annotations in conjunction with the interview variable will be analysed to identify any statistical relationship. Next, we will provide the results of the experiments. The performance of the models created during the experiments will be expressed in their Unweighted Average Recall or UAR. The UAR is the mean of the recall scores of each class. The recall is the ratio between the number of true positives and false negatives. If all predictions would be correctly classified the UAR would be 1. The UAR metric  is a better indication of prediction capacity than precision accuracy as our data-set is imbalanced. The UAR does not favour the majority class and is therefore a better indicator of the prediction capabilities of our models.
+This section will provide, analyze and discuss the results of the annotations and of the experiments done with the data-set. First, general statistics will be provided regarding the mood and likeability annotations. Then the new annotations in conjunction with the interview variable will be analyzed to identify any statistical relationship. Next, we will provide the results of the experiments. The performance of the models created during the experiments will be expressed in their Unweighted Average Recall or UAR. The UAR is the mean of the recall scores of each class. The recall is the ratio between the number of true positives and false negatives. If all predictions would be correctly classified the UAR would be 1. The UAR metric  is a better indication of prediction capacity than precision accuracy as our data-set is imbalanced. The UAR does not favor the majority class and is therefore a better indicator of the prediction capabilities of our models.
 \break
 
 \subsection{Annotation Analysis}
@@ -40,7 +40,7 @@ The apparent personality trait and interview dimensions were post-processed to c
 \label{tab:goldcount}
 \end{table}
 
-\begin{table*}[h]
+\begin{table*}[th]
 \begin{tabular}{|r|r|r|r|r|r|r|}
 \hline
 \rowcolor[HTML]{C0C0C0} Class &
@@ -60,8 +60,62 @@ Total & 960 & 960 & 960 & 960 & 960 & 960 \\ \hline
 
 \subsection{Statistical Relationships}
 
-Some interesting statistical experiments can be done regarding the statistical relationship of the mood primitives and likeability dimensions and the interview invitation. For these experiments we will use the cardinal values of the interview variable. 
+Some interesting statistical experiments can be done regarding the statistical relationship of the mood primitives and likeability dimensions and the interview invitation. For these experiments we will use the cardinal values of the interview variable. Three box-plots are created using this data and can be seen in figure \ref{fig:boxplotval}, figure \ref{fig:boxplotaro} and figure \ref{fig:boxplotlike}. For these box-plots the y-axis indicates the cardinal interview invitation variable, where a higher score means they would be more likely to be invited for an interview. The x-axis indicate the three classes of the arousal, valence or likeability dimensions. The orange horizontal line in the box-plots indicate the mean. As the plots show, there is a upwards trend in the mean of all three box-plots. Meaning that if the subject is classified in the higher class, they would be more likely to be invited to a job interview.
+
+\begin{figure}[h]
+  \centering
+  \includesvg[width=\columnwidth]{Images/boxplot_valence_interview.svg}
+  \caption{Box-plot of the valence classes and interview invitation variable}
+  \label{fig:boxplotval}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includesvg[width=\columnwidth]{Images/boxplot_arousal_interview.svg}
+  \caption{Box-plot of the arousal classes and interview invitation variable}
+  \label{fig:boxplotaro}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includesvg[width=\columnwidth]{Images/boxplot_likeability_interview.svg}
+  \caption{Box-plot of the likeability classes and interview invitation variable}
+  \label{fig:boxplotlike}
+\end{figure}
+
+However, to see if there is a correlation between the interview variable and mood and likeability variables we must look at the Spearman's Rank-Order Correlation coefficient. This coefficient can used to calculate correlation for ordinal categorical variables. To calculate this coefficient we will be using the binarized data-set of the interview variable. The coefficient is calculated as follows: \(\rho = \frac{cov(x,y)}{\sigma_x \sigma_y}\), where \(cov(x,y)\) is the covariance of the variables and \(\rho\) is the Pearson correlation coefficient. Table \ref{tab:spearman} shows the correlation and p value between the three dimensions and the binarized interview variable. The results show a low p value for all dimensions, with every p value being close to 0. This means that the null hypothesis should be rejected, where the null hypothesis is that two sets of data are uncorrelated. By rejected the null hypothesis we can conclude that the sets of data are not uncorrelated, however it does not prove that they are correlated. If we look at table \ref{tab:spearman} we can see that the correlation values are between 0.2 and 0.4. For the arousal dimension this means that the strength of the correlation is small, while for the valence and likeability dimensions there is medium strong correlation. A perfect correlation would be indicated with a value of 1 or -1 (for a negative correlation). Typically, a correlation is considered strong if the value is higher than 0.7 or lower than -0.7. 
+
+\begin{table}[h]
+\begin{tabular}{|l|r|r|r|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+ & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Arousal} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Valence} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Likeability} \\ \hline
+Correlation & 0.296 & 0.204 & 0.395 \\ \hline
+P Value & 6.51E-21 & 1.76E-10 & 3.09E-37 \\ \hline
+\end{tabular}
+\caption{Results of the Spearman Rank Correlation coefficient calculations}
+\label{tab:spearman}
+\end{table}
 
 \subsection{Mood and Likeability Model Experiments}
+In this section we will discuss the performance of the models that are trained using the mood and likeability dimensions and the extracted video features. As stated in the methodology the data-set was split into a training set of 660 rows and a test set of 300 rows. Both the self annotation and the gold standard annotations were used for training the classifiers. Models using ELMs and SVMs wer
+
+\begin{table*}[h]
+\begin{tabular}{|l|l|r|r|r|r|r|r|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+\textbf{Weighted} & \textbf{Normalization} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{self\_arousal}} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{gold\_arousal}} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{self\_valence}} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{gold\_valence}} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{self\_like}} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{gold\_like}} \\ \hline
+\textbf{No} & \textbf{NN} & \cellcolor[HTML]{FFE2E2}39.79\% & \cellcolor[HTML]{FFAEAE}42.67\% & \cellcolor[HTML]{FFF9E7}47.91\% & \cellcolor[HTML]{FFF9E9}47.78\% & \cellcolor[HTML]{FFFFFF}38.47\% & \cellcolor[HTML]{D1EDDF}42.61\% \\ \hline
+\textbf{No} & \textbf{ZN} & \cellcolor[HTML]{FF9B9B}43.76\% & \cellcolor[HTML]{FF2E2E}49.88\% & \cellcolor[HTML]{FFF4D5}49.11\% & \cellcolor[HTML]{FFFFFF}46.21\% & \cellcolor[HTML]{6DC499}51.56\% & \cellcolor[HTML]{88CFAD}49.11\% \\ \hline
+\textbf{No} & \textbf{L2} & \cellcolor[HTML]{FFE1E1}39.80\% & \cellcolor[HTML]{FFB2B2}42.49\% & \cellcolor[HTML]{FFFAEC}47.53\% & \cellcolor[HTML]{FFFCF1}47.19\% & \cellcolor[HTML]{F0F9F5}39.84\% & \cellcolor[HTML]{CAEADA}43.25\% \\ \hline
+\textbf{No} & \textbf{ZN+L2} & \cellcolor[HTML]{FFE4E4}39.68\% & \cellcolor[HTML]{FF5656}47.63\% & \cellcolor[HTML]{FFF1C9}49.95\% & \cellcolor[HTML]{FFFEF9}46.64\% & \cellcolor[HTML]{8DD1B0}48.68\% & \cellcolor[HTML]{7FCBA6}49.98\% \\ \hline
+\textbf{Yes} & \textbf{NN} & \cellcolor[HTML]{FFC1C1}41.60\% & \cellcolor[HTML]{FF5F5F}47.15\% & \cellcolor[HTML]{FFF5D7}49.00\% & \cellcolor[HTML]{FFE8A8}52.25\% & \cellcolor[HTML]{70C59B}51.33\% & \cellcolor[HTML]{5CBE8E}53.04\% \\ \hline
+\textbf{Yes} & \textbf{ZN} & \cellcolor[HTML]{FF8383}\textbf{45.13\%} & \cellcolor[HTML]{FF0000}\textbf{52.46\%} & \cellcolor[HTML]{FFE9AD}\textbf{51.92\%} & \cellcolor[HTML]{FFDA73}55.92\% & \cellcolor[HTML]{5BBD8D}\textbf{53.19\%} & \cellcolor[HTML]{86CEAB}49.32\% \\ \hline
+\textbf{Yes} & \textbf{L2} & \cellcolor[HTML]{FFFFFF}38.11\% & \cellcolor[HTML]{FF1919}51.08\% & \cellcolor[HTML]{FFF3D2}49.36\% & \cellcolor[HTML]{FFD666}\textbf{56.77\%} & \cellcolor[HTML]{66C195}52.18\% & \cellcolor[HTML]{57BB8A}\textbf{53.49\%} \\ \hline
+\textbf{Yes} & \textbf{ZN+L2} & \cellcolor[HTML]{FF9898}43.91\% & \cellcolor[HTML]{FF0202}52.37\% & \cellcolor[HTML]{FFF1C8}50.05\% & \cellcolor[HTML]{FFE8A6}52.38\% & \cellcolor[HTML]{5CBD8E}53.08\% & \cellcolor[HTML]{7BCAA3}50.35\% \\ \hline
+\end{tabular}
+\caption{Linear Kernel Extreme Learning Machine model performance results expressed in UAR}
+\label{tab:lkelm}
+\end{table*}
 
 \subsection{Personality Trait experiments}
