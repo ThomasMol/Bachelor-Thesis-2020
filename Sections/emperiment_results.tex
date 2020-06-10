@@ -60,7 +60,7 @@ Total & 960 & 960 & 960 & 960 & 960 & 960 \\ \hline
 
 \subsection{Statistical Relationships}
 
-Some interesting statistical experiments can be done regarding the statistical relationship of the mood primitives and likeability dimensions and the interview invitation. For these experiments we will use the cardinal values of the interview variable. Three box-plots are created using this data and can be seen in figure \ref{fig:boxplotval}, figure \ref{fig:boxplotaro} and figure \ref{fig:boxplotlike}. For these box-plots the y-axis indicates the cardinal interview invitation variable, where a higher score means they would be more likely to be invited for an interview. The x-axis indicate the three classes of the arousal, valence or likeability dimensions. The orange horizontal line in the box-plots indicate the mean. As the plots show, there is a upwards trend in the mean of all three box-plots. Meaning that if the subject is classified in the higher class, they would be more likely to be invited to a job interview.
+Some interesting statistical experiments can be done regarding the statistical relationship of the mood primitives and likeability dimensions and the interview invitation. For these experiments we will use the cardinal values of the interview variable and the self annotations of the arousal, valence and likeability dimensions. Three box-plots are created and are shown in figure \ref{fig:boxplotval}, figure \ref{fig:boxplotaro} and figure \ref{fig:boxplotlike}. For these box-plots the y-axis indicates the cardinal interview invitation variable, where a higher score means they would be more likely to be invited for an interview. The x-axis indicate the three ordinal classes of the arousal, valence or likeability dimensions. The orange horizontal line in the box-plots indicate the mean. As the plots show, there is a upwards trend in the mean of all three box-plots. Meaning that if the subject is classified in the higher class, they would be more likely to have a higher score in the interview invitation variable.
 
 \begin{figure}[h]
   \centering
@@ -83,7 +83,7 @@ Some interesting statistical experiments can be done regarding the statistical r
   \label{fig:boxplotlike}
 \end{figure}
 
-However, to see if there is a correlation between the interview variable and mood and likeability variables we must look at the Spearman's Rank-Order Correlation coefficient. This coefficient can used to calculate correlation for ordinal categorical variables. To calculate this coefficient we will be using the binarized data-set of the interview variable. The coefficient is calculated as follows: \(\rho = \frac{cov(x,y)}{\sigma_x \sigma_y}\), where \(cov(x,y)\) is the covariance of the variables and \(\rho\) is the Pearson correlation coefficient. Table \ref{tab:spearman} shows the correlation and p value between the three dimensions and the binarized interview variable. The results show a low p value for all dimensions, with every p value being close to 0. This means that the null hypothesis should be rejected, where the null hypothesis is that two sets of data are uncorrelated. By rejected the null hypothesis we can conclude that the sets of data are not uncorrelated, however it does not prove that they are correlated. If we look at table \ref{tab:spearman} we can see that the correlation values are between 0.2 and 0.4. For the arousal dimension this means that the strength of the correlation is small, while for the valence and likeability dimensions there is medium strong correlation. A perfect correlation would be indicated with a value of 1 or -1 (for a negative correlation). Typically, a correlation is considered strong if the value is higher than 0.7 or lower than -0.7. 
+However, to see if there is a correlation between the interview variable and mood and likeability variables we must look at the Spearman's Rank-Order Correlation coefficient. This coefficient is used to calculate correlation for ordinal categorical variables. To calculate this coefficient we will be using the binarized data-set of the interview variable. The coefficient is calculated as follows: \(\rho = \frac{cov(x,y)}{\sigma_x \sigma_y}\), where \(cov(x,y)\) is the covariance of the variables and \(\rho\) is the Pearson correlation coefficient. Table \ref{tab:spearman} shows the correlation and p value between the three dimensions and the binarized interview variable. The results show a low p value for all dimensions, with every p value being close to 0. This means that the null hypothesis should be rejected, where the null hypothesis is that two sets of data are uncorrelated. By rejected the null hypothesis we can conclude that the sets of data are not uncorrelated, however it does not prove that they are correlated. If we look at table \ref{tab:spearman} we can see that the correlation values are between 0.2 and 0.4. For the arousal dimension this means that the strength of the correlation is small, while for the valence and likeability dimensions there is medium strong correlation. A perfect correlation would be indicated with a value of 1 or -1 (for a negative correlation). Typically, a correlation is considered strong if the correlation coefficient value is higher than 0.7 or lower than -0.7. 
 
 \begin{table}[h]
 \begin{tabular}{|P{1cm}|r|r|r|}
@@ -137,3 +137,24 @@ The results of the SVM models trained using the extracted video features are sho
 Other types of kernels, like the RBF and sigmoid kernel, were explored for the ELM and SVM models. However, these models performed worse on all dimensions compared to the linear models. 
 
 \subsection{Personality Trait experiments}
+
+
+
+\begin{table*}[]
+\begin{tabular}{|
+>{\columncolor[HTML]{EFEFEF}}l |
+>{\columncolor[HTML]{EFEFEF}}l |r|r|r|r|r|r|}
+\hline
+\textbf{Weighted} & \textbf{Normalization} & \multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}\textbf{AGRE}} & \multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}\textbf{CONS}} & \multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}\textbf{EXTRA}} & \multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}\textbf{NEUR}} & \multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}\textbf{OPEN}} & \multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}\textbf{INTER}} \\ \hline
+\textbf{No} & \textbf{NN} & \cellcolor[HTML]{FF8585}60.12\% & \cellcolor[HTML]{FFD86C}66.45\% & \cellcolor[HTML]{9ED8BC}70.90\% & \cellcolor[HTML]{FFFFFF}62.16\% & \cellcolor[HTML]{FFFFFF}64.23\% & \cellcolor[HTML]{D18CFF}67.94\% \\ \hline
+\textbf{No} & \textbf{ZN} & \cellcolor[HTML]{FFE0E0}58.79\% & \cellcolor[HTML]{FFE9AC}64.55\% & \cellcolor[HTML]{EEF8F3}69.36\% & \cellcolor[HTML]{3D3DFF}64.42\% & \cellcolor[HTML]{FFC061}69.43\% & \cellcolor[HTML]{CE84FF}68.04\% \\ \hline
+\textbf{No} & \textbf{L2} & \cellcolor[HTML]{FF5757}60.79\% & \cellcolor[HTML]{FFD970}66.34\% & \cellcolor[HTML]{6CC499}71.88\% & \cellcolor[HTML]{0000FF}\textbf{65.12\%} & \cellcolor[HTML]{FFCB7D}68.51\% & \cellcolor[HTML]{C977FF}68.19\% \\ \hline
+\textbf{No} & \textbf{ZN+L2} & \cellcolor[HTML]{FFFFFF}58.33\% & \cellcolor[HTML]{FFF3D1}63.46\% & \cellcolor[HTML]{FFFFFF}69.02\% & \cellcolor[HTML]{7474FF}63.78\% & \cellcolor[HTML]{FFB546}70.32\% & \cellcolor[HTML]{E1B4FF}67.49\% \\ \hline
+\textbf{Yes} & \textbf{NN} & \cellcolor[HTML]{FF0000}\textbf{62.05\%} & \cellcolor[HTML]{FFEBB5}64.29\% & \cellcolor[HTML]{DFF3E9}69.64\% & \cellcolor[HTML]{6464FF}63.97\% & \cellcolor[HTML]{FFB038}70.77\% & \cellcolor[HTML]{FFFFFF}66.62\% \\ \hline
+\textbf{Yes} & \textbf{ZN} & \cellcolor[HTML]{FFD5D5}58.95\% & \cellcolor[HTML]{FFF8E4}62.90\% & \cellcolor[HTML]{CDEBDC}70.00\% & \cellcolor[HTML]{3D3DFF}64.42\% & \cellcolor[HTML]{FFB84E}70.05\% & \cellcolor[HTML]{9900FF}\textbf{69.56\%} \\ \hline
+\textbf{Yes} & \textbf{L2} & \cellcolor[HTML]{FF8888}60.07\% & \cellcolor[HTML]{FFD666}\textbf{66.61\%} & \cellcolor[HTML]{57BB8A}\textbf{72.28\%} & \cellcolor[HTML]{6868FF}63.92\% & \cellcolor[HTML]{FF9900}\textbf{72.58\%} & \cellcolor[HTML]{EDD0FF}67.16\% \\ \hline
+\textbf{Yes} & \textbf{ZN+L2} & \cellcolor[HTML]{FFBFBF}59.27\% & \cellcolor[HTML]{FFFFFF}62.06\% & \cellcolor[HTML]{DEF2E8}69.67\% & \cellcolor[HTML]{3C3CFF}64.43\% & \cellcolor[HTML]{FFC772}68.87\% & \cellcolor[HTML]{AF35FF}68.95\% \\ \hline
+\end{tabular}
+\caption{Kernel Extreme Learning Machine results for the personality trait and interview variables (binary). AGRE: agreeablenss, CONS: conscientiousness, EXTRA: extraversion, NEUR: neuroticism, OPEN: Openness to Experience, INTER: interiew invitation.}
+\label{tab:kelmperson}
+\end{table*}
