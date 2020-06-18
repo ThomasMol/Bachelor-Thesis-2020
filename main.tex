@@ -12,6 +12,9 @@
 \usepackage{array} % for defining a new column type
 \usepackage{varwidth} %for the varwidth minipage environment
 
+\usepackage{multirow}
+\usepackage{xcolor, colortbl}
+\definecolor{Gray}{rgb}{0.7,0.7,0.7}
 
 \usepackage{svg}
 \usepackage{amsmath}
@@ -96,7 +99,7 @@
         \twocolumn[
         \section{Experiment Results}\label{section:results}
         ]
-        \input{Sections/emperiment_results.tex}
+        \input{Sections/experiment_results.tex}
         \pagebreak
         \onecolumn
         \section{Conclusion \& Discussion}\label{section:discussion}

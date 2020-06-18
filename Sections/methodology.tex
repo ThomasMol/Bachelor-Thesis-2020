@@ -63,20 +63,34 @@ The data was then split up in a train set of 660 video clips and a test set of 3
 \label{subsection:normalization}
 Z normalization transforms the input vector into a vector where the mean is 0 or very close to 0 while the standard deviation is close to 1. The number for a single data point of the computed output vector can also be called the z-score. This score essentially is the number of standard deviations a vector is away from the mean. It can indicate how familiar a data point is relative to the others. 
 
+\begin{figure*}[h]
+  \centering
+  \includesvg[width=\textwidth]{Images/Cascaded feature normalization OZP.svg}
+  \caption{Feature normalization pipeline}
+  \label{fig:normpipeline}
+\end{figure*}
+
 While Z normalization is applied at feature level L2 normalization is applied at feature vector level. L2 normalization is applied at each row of the feature set so that if the values are squared and then summed, they add up to exactly 1. 
 
-Figure x shows the flowchart of the normalization steps that were applied at feature and vector level. (The combination of Z normalization and L2 normalization increased performance on most models. Applying only L2 normalization also increased accuracy scores while no normalization at all performed the worst. )
+Figure \ref{fig:normpipeline} shows the flowchart of the normalization steps that were applied at feature and vector level. 
 
-\subsection{Classification}
+
+
+\subsection{Classification Algorithms}
 \label{subsection:classificaiton}
 Several types of models were used for classification from the extracted video features. These models include:
 \begin{enumerate}
 \item Extreme Learning Machines (ELM)
 \item Support Vector Machines (SVM)
 \item Decision Trees (DT)
+\item Ridge Classification
 \end{enumerate}
+In the first stage we use the ELM and SVM classifiers, while in the second stage we use the predictions of the ELM classifier to train a decision tree and linear model. The second stage classifications will give an indication of the feature importance and contribute to the explainability of our classification models. 
 
+Originally proposed by Huang in 2004 (\cite{huang2004extreme}), the learning algorithm for Extreme Learning Machine uses single-hidden layer feedforward neural networks (SLFN). It chooses the nodes randomly and analytically determines the the output weights for the neural network. As a result, the training speed of this algorithm is noticeably fast. The technical details of the classifiers can be found in \cite{huang2004extreme} and \cite{huang2006extreme}. We use a linear kernel which has a regularization coefficient. We optimize this coefficient during training and with threefold subject independent cross-validation of the training set. 
 
+Just like ELM, the SVM algorithm is used for regression and classification. SVMs is a supervised learning method which is effective when the number of features is high or even higher than the number of samples. The algorithm finds the hyperplane in a dimensional space of size N, where N is the number of features. It then uses the hyperplane to classify the data-points. To obtain the most accurate model the algorithm finds the hyperplane where the margins of the hyperplane are the largest. Just like the ELM algorithm a linear kernel is used and a regularization coefficient is optimized. 
 
+The models that are trained using the ELM and SVM algorithms will create a set of predictions of the personality trait, mood and likeability dimensions. The predictions of the ELM classifier will be used in the second stage of our classification. During this stage, the predictions are stacked to a Decision Tree classifier as high level features. The DT classifier is trained using the predictions and the interview invitation variable as labels. Then, the trained DT can be visualized which contributes to the explainability and interpretability of our classification model.
 
-
+Lastly, the same prediction data set to train the Decision Tree classifier is used to train a linear model. We will be using the Ridge Classifier which converts the target values to -1 and 1. Then, the model treats the problem as a regression problem. The trained model will provide us with the coefficient of the features of the decision function. In other words, the feature importance can be derived from these models which will show us what feature is the most or least important for determining the class.
