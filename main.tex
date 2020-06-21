@@ -19,6 +19,7 @@
 \usepackage{svg}
 \usepackage{amsmath}
 
+
 \def\blankpage{
   \clearpage
   \thispagestyle{empty}
@@ -86,25 +87,31 @@
         \input{Sections/introduction.tex}
         \end{multicols}
         \pagebreak
-        \twocolumn[
-        \section{Related Literature}\label{section:literature}
-        ]
+        
+        \twocolumn[\section{Related Literature}\label{section:literature}]
         \input{Sections/related_literature.tex}
         \pagebreak
-        \twocolumn[
-        \section{Methodology}\label{section:methodology}
-        ]
+
+        %\section{Related Literature}\label{section:literature}
+        %\begin{multicols}{2}
+        %\input{Sections/related_literature.tex}
+        %\end{multicols}
+        %\pagebreak
+
+        
+        \twocolumn[\section{Methodology}\label{section:methodology}]
         \input{Sections/methodology.tex}
         \pagebreak
-        \twocolumn[
-        \section{Experiment Results}\label{section:results}
-        ]
+        
+        \twocolumn[\section{Experiment Results}\label{section:results}]
         \input{Sections/experiment_results.tex}
         \pagebreak
+        
         \onecolumn
         \section{Conclusion \& Discussion}\label{section:discussion}
         \input{Sections/conclusion_and_discussion.tex}
         \pagebreak
+        
     \thispagestyle{plain}
     \printbibliography[heading=bibintoc,title={References}]
     \pagebreak
