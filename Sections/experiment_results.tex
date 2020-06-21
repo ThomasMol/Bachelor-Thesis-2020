@@ -165,19 +165,19 @@ The results of the experiments in sections \ref{subsection:moodlikeexp} and \ref
 
 
 \begin{table}[h]
-\begin{tabular}{|>{\columncolor{Gray}}l|l|l|l|l|}
-\hline \rowcolor{Gray} 
- & \multicolumn{2}{l|}{\textbf{3 Fold CV}} & \multicolumn{2}{l|}{\textbf{Testset}} \\ \hline
-\textbf{Weighted} & \textbf{Yes} & \textbf{No} & \textbf{Yes} & \textbf{No} \\ \hline
-\textbf{INTER} & 0.66 & 0.67 & 0.67 & 0.67 \\ \hline
-\textbf{AGRE} & 0.63 & 0.62 & 0.59 & 0.59 \\ \hline
-\textbf{OPEN} & 0.68 & 0.68 & 0.70 & 0.68 \\ \hline
-\textbf{NEUR} & 0.66 & 0.66 & 0.60 & 0.59 \\ \hline
-\textbf{EXTRA} & 0.71 & 0.70 & 0.71 & 0.69 \\ \hline
-\textbf{CONS} & 0.65 & 0.65 & 0.59 & 0.59 \\ \hline
-\textbf{ARO} & 0.48 & 0.41 & 0.44 & 0.37 \\ \hline
-\textbf{VAL} & 0.56 & 0.53 & 0.43 & 0.37 \\ \hline
-\textbf{LIKE} & 0.46 & 0.43 & 0.44 & 0.43 \\ \hline
+\begin{tabular}{|l|r|r|r|r|}
+\hline
+ & \multicolumn{2}{l|}{3 Fold CV} & \multicolumn{2}{l|}{Test set} \\ \hline
+Weighted & \multicolumn{1}{l|}{Yes} & \multicolumn{1}{l|}{No} & \multicolumn{1}{l|}{Yes} & \multicolumn{1}{l|}{No} \\ \hline
+INTER & 65.75\% & 67.05\% & 66.87\% & 66.75\% \\ \hline
+AGRE & 62.67\% & 61.68\% & 59.35\% & 58.95\% \\ \hline
+OPEN & 67.64\% & 68.23\% & 70.34\% & 67.65\% \\ \hline
+NEUR & 65.71\% & 66.29\% & 60.38\% & 59.36\% \\ \hline
+EXTRA & 70.62\% & 70.07\% & 71.02\% & 69.35\% \\ \hline
+CONST & 65.20\% & 65.36\% & 59.39\% & 58.56\% \\ \hline
+ARO & 47.67\% & 41.38\% & 44.25\% & 37.26\% \\ \hline
+VAL & 56.17\% & 52.74\% & 43.38\% & 37.21\% \\ \hline
+LIKE & 45.97\% & 43.16\% & 43.95\% & 42.54\% \\ \hline
 \end{tabular}
 \caption{The UAR scores of the 3 Fold Cross Validation experiment and the predicted test set using ELM.}
 \label{tab:3foldtestuar}
@@ -186,4 +186,45 @@ The results of the experiments in sections \ref{subsection:moodlikeexp} and \ref
 \subsection{Explainability Analysis and Decision Trees}
 The performance results of the trained models are overall good, as they show UAR scores of around 65\%. Now to explain the predictions made by our model we will be training and visualizing a decision tree. However, a decision tree trained with over 16000 video features would result in a tree with over 2\textsuperscript{16000} branches. Therefore, to increase explainability, we will choose 5 to 8 high level features to model the interview invitation variable. We will use the predictions of the 3 fold cross validation models, as described in section \ref{subsection:3foldcv}, as the high level features. Meaning, the openness, conscientiousness, extroversion, agreeableness, neuroticism, valence, arousal and likeability predictions were used as the high level features. Meanwhile, the interview dimension was used as the label. 
 
-The constructed decision trees can be interpreted as follows: a node will contain a high level feature, agreeableness for example. Then the branch to the left of this node means the feature scored low while the right branch means the feature scored high. The leaf nodes indicate the predicted class, in our case whether or not the person is invited to a job interview or not. Neuroticism correlates negatively with the interview variable, therefore it is represented with its opposite non-neuroticism. In the decision tree this means that the right branch indicates a high score in non-neuroticism. 
+Table \ref{tab:dtuar} show the UAR scores of the trained decision tree models for each dimension combination. Personality refers to the big five personality traits, while weighted and unweighted refers to the type of prediction set that was used. Note that since the predicted dimension is binary, the chance level is 50\%. To increase the explainability and interpretability of the decision tree, the mood and likability dimensions were, like the personality traits, also binarized. The mood and likeability dimensions had few samples for the low class so the decision was to combine them with the medium class.
+
+\begin{table*}[]
+\begin{tabular}{|l|r|r|}
+\hline
+ & \multicolumn{1}{l|}{Weighted} & \multicolumn{1}{l|}{Unweighted} \\ \hline
+Personality & \cellcolor[HTML]{86CEAB}63.86\% & \cellcolor[HTML]{D1EDDF}63.87\% \\ \hline
+Personality + valence & \cellcolor[HTML]{CBEADB}62.83\% & \cellcolor[HTML]{FCFEFD}63.20\% \\ \hline
+Personality + arousal & \cellcolor[HTML]{E3F4EC}62.47\% & \cellcolor[HTML]{83CDA9}65.10\% \\ \hline
+Personality + likeability & 61.68\% & 64.80\% \\ \hline
+Personality + valence + arousal & \cellcolor[HTML]{FFFFFF}62.04\% & \cellcolor[HTML]{57BB8A}\textbf{65.78\%} \\ \hline
+Personality + valence + likeability & 63.26\% & \cellcolor[HTML]{D1EDDF}63.87\% \\ \hline
+Personality + likeability+ arousal & \cellcolor[HTML]{57BB8A}\textbf{64.56\%} & \cellcolor[HTML]{F0F9F5}63.39\% \\ \hline
+Personality + valence + arousal + likeability & \cellcolor[HTML]{5CBD8D}64.50\% & \cellcolor[HTML]{FFFFFF}63.15\% \\ \hline
+\end{tabular}
+\caption{UAR scores of the modeled Decision Trees per dimension combination.}
+\label{tab:dtuar}
+\end{table*}
+
+As the results indicate for the unweighted predictors, adding arousal to the dimensions increases the performance score of the models, except when adding the likeability dimension. For the weighted prediction set, the likeability and arousal combination was the best scorer. The overall top scorer, with a UAR score close to 66\%, used the unweighted prediction set of the personality traits, valence and arousal dimensions. 
+
+Figure \ref{fig:decisiontree} is the visualization of the decision tree which has the highest UAR score. The constructed decision tree can be interpreted as follows: a node will contain a high level feature, agreeableness for example. Then the branch to the left of this node means the feature scored low while the right branch means the feature scored high. The leaf nodes indicate the predicted class, in our case whether or not a person is invited to a job interview or not. Neuroticism correlates negatively with the interview variable, therefore it is represented with its opposite; non-neuroticism. In the decision tree this means that the right branch indicates a high score in non-neuroticism. 
+\begin{figure*}[h]
+  \centering
+  \includesvg[width=\textwidth]{Images/decision_tree.svg}
+  \caption{Decision Tree of the personality traits, arousal and valence dimensions, predicting the interview invitation variable.}
+  \label{fig:decisiontree}
+\end{figure*}
+
+\begin{figure}[h]
+  \centering
+  \includesvg[width=\columnwidth]{Images/feature_importance_weighted.svg}
+  \caption{Feature importance distribution using a Ridge Classifier with the weighted prediction set.}
+  \label{fig:featureimp_weighted}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includesvg[width=\columnwidth]{Images/feature_importance_unweighted.svg}
+  \caption{Feature importance distribution using a Ridge Classifier with the unweighted prediction set.}
+  \label{fig:featureimp_unweighted}
+\end{figure}
