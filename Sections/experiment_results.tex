@@ -9,15 +9,15 @@ The apparent personality trait and interview dimensions were post-processed to c
 \begin{table}[h]
 \begin{tabular}{|r|r|r|r|}
 \hline
-\rowcolor[HTML]{C0C0C0} 
+\rowcolor{Gray} 
 \multicolumn{1}{|l|}{\cellcolor[HTML]{C0C0C0}Class} &
   \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Arousal} &
   \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Valence} &
   \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Likeability} \\ \hline
-1                           & 77  & 46  & 99  \\
-2                           & 364 & 707 & 505 \\
+1                           & 77  & 46  & 99  \\ \hline
+2                           & 364 & 707 & 505 \\ \hline
 3                           & 519 & 207 & 356 \\ \hline
-\multicolumn{1}{|l|}{Total} & 960 & 960 & 960 \\ \hline
+\multicolumn{1}{|l|}{Total:} & 960 & 960 & 960 \\ \hline
 \end{tabular}
 \caption{Number of annotations (self) per class of the mood primitive and likeability dimensions}
 \label{tab:selfcount}
@@ -26,35 +26,35 @@ The apparent personality trait and interview dimensions were post-processed to c
 \begin{table}[h]
 \begin{tabular}{|r|r|r|r|}
 \hline
-\rowcolor[HTML]{C0C0C0} 
+\rowcolor{Gray} 
 \multicolumn{1}{|l|}{\cellcolor[HTML]{C0C0C0}Class} &
   \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Arousal} &
   \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Valence} &
   \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}Likeability} \\ \hline
-1                           & 108 & 82  & 197 \\
-2                           & 593 & 705 & 602 \\
+1                           & 108 & 82  & 197 \\ \hline
+2                           & 593 & 705 & 602 \\ \hline
 3                           & 259 & 173 & 161 \\ \hline
-\multicolumn{1}{|l|}{Total} & 960 & 960 & 960 \\ \hline
+\multicolumn{1}{|l|}{Total:} & 960 & 960 & 960 \\ \hline
 \end{tabular}
 \caption{Number of annotations (gold min) per class of the mood primitive and likeability dimensions}
 \label{tab:goldcount}
 \end{table}
 
-\begin{table*}[th]
+\begin{table*}[h]
 \begin{tabular}{|r|r|r|r|r|r|r|}
 \hline
-\rowcolor[HTML]{C0C0C0} Class &
-  \multicolumn{1}{l|}{Openness} &
-  \multicolumn{1}{P{2cm}|}{Conscientiousness} &
-  \multicolumn{1}{l|}{Extraversion} &
-  \multicolumn{1}{P{2cm}|}{Agreeableness} &
-  \multicolumn{1}{l|}{Neuroticism} &
-  \multicolumn{1}{P{2cm}|}{Interview Invitation} \\ \hline
-1     & 528 & 458 & 443 & 437 & 441 & 426 \\ \hline
-2     & 432 & 502 & 517 & 523 & 519 & 534 \\ \hline
-Total & 960 & 960 & 960 & 960 & 960 & 960 \\ \hline
+\rowcolor{Gray} Class &
+  \multicolumn{1}{l|}{OPEN} & 
+  \multicolumn{1}{l|}{CONS} &
+  \multicolumn{1}{l|}{EXTRA} &
+  \multicolumn{1}{l|}{AGRE} &
+  \multicolumn{1}{l|}{NEUR} &
+  \multicolumn{1}{l|}{INTER} \\ \hline
+1 (Low)    & 528 & 458 & 443 & 437 & 441 & 426 \\ \hline
+2 (High)    & 432 & 502 & 517 & 523 & 519 & 534 \\ \hline
+Total: & 960 & 960 & 960 & 960 & 960 & 960 \\ \hline
 \end{tabular}
-\caption{Number of annotations per class of apparent personality trait and interview invitation dimensions}
+\caption{Number of annotations per class of apparent personality trait and interview invitation dimensions. AGRE: agreeableness, CONS: conscientiousness, EXTRA: extroversion, NEUR: neuroticism, OPEN: Openness to Experience, INTER: interview invitation}
 \label{tab:personcount}
 \end{table*}
 
@@ -216,6 +216,8 @@ Figure \ref{fig:decisiontree} is the visualization of the decision tree which ha
   \label{fig:decisiontree}
 \end{figure*}
 
+To further examine feature importance a ridge classifier model was trained using the same high level feature prediction set that was used for the decision tree. Figures \ref{fig:featureimp_weighted} and \ref{fig:featureimp_unweighted} show the distribution of the feature importance as modeled by the ridge classifier. As both distributions show, the agreeableness, openness and conscientiousness dimensions stand out as the most important features. This is comparable to the decision tree in figure \ref{fig:decisiontree}, as the three top level nodes contain the same dimensions, implying their importance.  
+
 \begin{figure}[h]
   \centering
   \includesvg[width=\columnwidth]{Images/feature_importance_weighted.svg}
@@ -230,4 +232,3 @@ Figure \ref{fig:decisiontree} is the visualization of the decision tree which ha
   \label{fig:featureimp_unweighted}
 \end{figure}
 
-To further examine feature importance a ridge classifier model was trained using the same high level feature prediction set that was used for the decision tree. Figures \ref{fig:featureimp_weighted} and \ref{fig:featureimp_unweighted} show the distribution of the feature importance as modeled by the ridge classifier. As both distributions show, the agreeableness, openness and conscientiousness dimensions stand out as the most important features. This is comparable to the decision tree in figure \ref{fig:decisiontree}, as the three top level nodes contain the same dimensions, implying their importance.  

@@ -32,19 +32,19 @@ Two annotators annotated the same 960 video clips for these 4 dimensions. After 
 To measure the inter-rater reliability between the two annotators the Cohen's kappa coefficient was calculated. This coefficient is considered more robust as it takes into account the occurrence of an agreement by chance. The resulting coefficient will determine whether the agreement is accidental or not. Table x shows the results of the Cohen's kappa calculations. The observed agreement (po) is the number of agreements divided by the total of number items. The random agreement (pe) is the probability that the annotators agreed on either of the possible annotations. Using the observed and random agreement the Cohen's kappa can be calculated. The coefficient ranges from 0 to 1 and can be interpreted as shown in table \ref{tab:cohenkappainterpret}.
 
 \begin{table}[]
-\begin{tabular}{|p{3cm}|p{3cm}|}
+\begin{tabular}{|P{2cm}|P{4cm}|}
 \hline
-\rowcolor[HTML]{EFEFEF} 
-{\color[HTML]{41474D} Cohen's Kappa} & {\color[HTML]{41474D} Agreement}                      \\ \hline
-{\color[HTML]{41474D} 0}                   & {\color[HTML]{41474D} Agreement equivalent to chance} \\ \hline
-{\color[HTML]{41474D} 0.10 - 0.20}         & {\color[HTML]{41474D} Slight}                         \\ \hline
-{\color[HTML]{41474D} 0.21 - 0.40}         & {\color[HTML]{41474D} Fair}                           \\ \hline
-{\color[HTML]{41474D} 0.41 - 0.60}         & {\color[HTML]{41474D} Moderate}                       \\ \hline
-{\color[HTML]{41474D} 0.61 - 0.80}         & {\color[HTML]{41474D} Substantial}                    \\ \hline
-{\color[HTML]{41474D} 0.81 - 0.99}         & {\color[HTML]{41474D} Near perfect}                   \\ \hline
-{\color[HTML]{41474D} 1}                   & {\color[HTML]{41474D} Perfect}                        \\ \hline
+\rowcolor{Gray}
+Cohen's Kappa & Agreement \\ \hline
+0 & Agreement equivalent to chance \\ \hline
+0.10 - 0.20 & Slight \\ \hline
+0.21 - 0.40 & Fair \\ \hline
+0.41 - 0.60 & Moderate \\ \hline
+0.61 - 0.80 & Substantial \\ \hline
+0.81 - 0.99 & Near perfect \\ \hline
+1 & Perfect \\ \hline
 \end{tabular}
-\caption{Cohen's kappa agreement interpretation}
+\caption{Cohen's kappa agreement interpretation.}
 \label{tab:cohenkappainterpret}
 \end{table}
 
@@ -53,19 +53,19 @@ Since Cohen's kappa takes into account the disagreement but not the degree of di
 Overall, every dimension shows a moderate agreement when quadratic weighting is applied. Further, for every dimension and weight the null hypothesis is rejected, where the null hypothesis is that the observed agreement is accidental. Therefore it is safe to say the inter-rater reliability is higher than chance level. 
 
 \begin{table*}[]
-\begin{tabular}{|
->{\columncolor[HTML]{C0C0C0}}l |l|r|r|r|r|P{2cm}|l|}
+\begin{tabular}{|l|l|r|r|r|P{1.3cm}|P{2cm}|P{2cm}|}
 \hline
-\textbf{Dimension} & \cellcolor[HTML]{C0C0C0}\textbf{Weight} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{po}} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{pe}} & \multicolumn{1}{l|}{\cellcolor[HTML]{C0C0C0}\textbf{Kappa}} & \multicolumn{1}{P{1.2cm}|}{\cellcolor[HTML]{C0C0C0}\textbf{Kappa Error}} & \cellcolor[HTML]{C0C0C0}\textbf{Agreement Result} & \cellcolor[HTML]{C0C0C0}\textbf{Null hypothesis} \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{Arousal}} & Unweighted & 0.6229 & 0.4077 & 0.3634 & 0.0264 & Fair & Rejected \\ \cline{2-8} 
-\textbf{} & Linear & 0.8073 & 0.6713 & 0.4138 & 0.0387 & Moderate & Rejected \\ \cline{2-8} 
-\textbf{} & Quadratic & 0.8995 & 0.8031 & 0.4896 & 0.0493 & Moderate & Rejected \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{Valence}} & Unweighted & 0.7177 & 0.5046 & 0.4302 & 0.0293 & Moderate & Rejected \\ \cline{2-8} 
-\textbf{} & Linear & 0.8573 & 0.7371 & 0.4571 & 0.0429 & Moderate & Rejected \\ \cline{2-8} 
-\textbf{} & Quadratic & 0.9271 & 0.8534 & 0.5027 & 0.0572 & Moderate & Rejected \\ \hline
-\multicolumn{1}{|c|}{\cellcolor[HTML]{C0C0C0}\textbf{Likeability}} & Unweighted & 0.5812 & 0.4230 & 0.2743 & 0.0276 & Fair & Rejected \\ \cline{2-8} 
-\textbf{} & Linear & 0.7818 & 0.6704 & 0.3380 & 0.0404 & Fair & Rejected \\ \cline{2-8} 
-\textbf{} & Quadratic & 0.8820 & 0.7941 & 0.4272 & 0.0506 & Moderate & Rejected \\ \hline
+\rowcolor{Gray}
+\textbf{Dimension} & \textbf{Weight} & \multicolumn{1}{l|}{\textbf{po}} & \multicolumn{1}{l|}{\textbf{pe}} & \multicolumn{1}{l|}{\textbf{Kappa}} & \multicolumn{1}{l|}{\textbf{Kappa Error}} & \textbf{Agreement} & \textbf{Null hypothesis} \\ \hline
+\multirow{3}{*}{\textbf{Arousal}} & Unweighted & 0.6229 & 0.4077 & 0.3634 & 0.0264 & Fair & Rejected \\ \cline{2-8} 
+ & Linear & 0.8073 & 0.6713 & 0.4138 & 0.0387 & Moderate & Rejected \\ \cline{2-8} 
+ & Quadratic & 0.8995 & 0.8031 & 0.4896 & 0.0493 & Moderate & Rejected \\ \hline
+\multirow{3}{*}{\textbf{Valence}} & Unweighted & 0.7177 & 0.5046 & 0.4302 & 0.0293 & Moderate & Rejected \\ \cline{2-8} 
+ & Linear & 0.8573 & 0.7371 & 0.4571 & 0.0429 & Moderate & Rejected \\ \cline{2-8} 
+ & Quadratic & 0.9271 & 0.8534 & 0.5027 & 0.0572 & Moderate & Rejected \\ \hline
+\multirow{3}{*}{\textbf{Likeability}} & Unweighted & 0.5812 & 0.4230 & 0.2743 & 0.0276 & Fair & Rejected \\ \cline{2-8} 
+ & Linear & 0.7818 & 0.6704 & 0.3380 & 0.0404 & Fair & Rejected \\ \cline{2-8} 
+ & Quadratic & 0.8820 & 0.7941 & 0.4272 & 0.0506 & Moderate & Rejected \\ \hline
 \end{tabular}
 \caption{Inter rater agreement results. po: observed agreement, pe: random agreement, Kappa: Cohen's Kappa.}
 \label{tab:cohenkappa}
