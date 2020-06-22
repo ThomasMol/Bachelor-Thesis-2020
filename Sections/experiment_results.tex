@@ -207,7 +207,8 @@ Personality + valence + arousal + likeability & \cellcolor[HTML]{5CBD8D}64.50\% 
 
 As the results indicate for the unweighted predictors, adding arousal to the dimensions increases the performance score of the models, except when adding the likeability dimension. For the weighted prediction set, the likeability and arousal combination was the best scorer. The overall top scorer, with a UAR score close to 66\%, used the unweighted prediction set of the personality traits, valence and arousal dimensions. 
 
-Figure \ref{fig:decisiontree} is the visualization of the decision tree which has the highest UAR score. The constructed decision tree can be interpreted as follows: a node will contain a high level feature, agreeableness for example. Then the branch to the left of this node means the feature scored low while the right branch means the feature scored high. The leaf nodes indicate the predicted class, in our case whether or not a person is invited to a job interview or not. Neuroticism correlates negatively with the interview variable, therefore it is represented with its opposite; non-neuroticism. In the decision tree this means that the right branch indicates a high score in non-neuroticism. 
+Figure \ref{fig:decisiontree} is the visualization of the decision tree which has the highest UAR score. The constructed decision tree can be interpreted as follows: a node will contain a high level feature, agreeableness for example. Then traversing to the left of this node means the feature scored low while traversing to the right branch means the feature scored high. The leaf nodes indicate the predicted class, in our case whether or not a person is invited to a job interview or not. Neuroticism correlates negatively with the interview variable, therefore it is represented with its opposite; non-neuroticism. In the decision tree this means that the right branch indicates a high score in non-neuroticism. As the tree shows, openness to experience is the most important feature as it is the top level node. 
+
 \begin{figure*}[h]
   \centering
   \includesvg[width=\textwidth]{Images/decision_tree.svg}
@@ -228,3 +229,5 @@ Figure \ref{fig:decisiontree} is the visualization of the decision tree which ha
   \caption{Feature importance distribution using a Ridge Classifier with the unweighted prediction set.}
   \label{fig:featureimp_unweighted}
 \end{figure}
+
+To further examine feature importance a ridge classifier model was trained using the same high level feature prediction set that was used for the decision tree. Figures \ref{fig:featureimp_weighted} and \ref{fig:featureimp_unweighted} show the distribution of the feature importance as modeled by the ridge classifier. As both distributions show, the agreeableness, openness and conscientiousness dimensions stand out as the most important features. This is comparable to the decision tree in figure \ref{fig:decisiontree}, as the three top level nodes contain the same dimensions, implying their importance.  
