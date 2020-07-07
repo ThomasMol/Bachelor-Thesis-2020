@@ -10,9 +10,10 @@ Our proposed method analyzes a video clip containing one person. The output is a
 
 \subsection{The Data Set}
 \label{subsection:dataset}
+
 For modeling and experimenting we relied on a publicly available data-set which contains 10,000 video clips with audio with an average duration of 15 seconds\footnote{The data-set can be found on http://chalearnlap.cvc.uab.es/dataset/24/description/}. The clips are collected from over 3000 videos available on YouTube. Figure \ref{fig:ssvideoclip} shows screenshots from four samples taken from the video clip data-set. The videos are annotated with the use of Amazon Mechanical Turk for apparent personality traits. These are the 5 OCEAN personality traits variables. Annotators saw a pair of video clips and were asked to assign an attribute to one of the videos with the option to not assign an attribute at all. These attributes are words describing the 5 OCEAN personality traits. 
 
-Furthermore, the videos are annotated for an additional variable, which is the interview variable. This variable measures whether a candidate should be invited for a job interview or not. Additionally these videos are annotated for ethnicity groups, age groups and gender. From this data-set of 10,000 videos the first 960 were selected for experimenting and further annotations of three more variables, namely, the valence, arousal and likeability variables. 
+Furthermore, the videos are annotated for an additional variable, which is the interview variable. This variable measures whether a candidate should be invited for a job interview or not. Additionally these videos are annotated for ethnicity groups, age groups and gender (\cite{escalante2018explaining}). From this data-set of 10,000 videos the first 960 were selected for experimenting and further annotations of three more variables, namely, the valence, arousal and likeability variables. 
 
 
 \begin{figure*}[h]
@@ -29,28 +30,7 @@ The selected 960 video clips were annotated additionally for mood primitives, li
 
 Two annotators annotated the same 960 video clips for these 4 dimensions. After which, the annotations were merged to create two additional data-sets. One data-set used the minimum of the two annotation, while the second one used the maximum of the two annotations. As a result, there were now 4 sets of annotations available to use and model classifiers with.
 
-To measure the inter-rater reliability between the two annotators the Cohen's kappa coefficient was calculated. This coefficient is considered more robust as it takes into account the occurrence of an agreement by chance. The resulting coefficient will determine whether the agreement is accidental or not. Table x shows the results of the Cohen's kappa calculations. The observed agreement (po) is the number of agreements divided by the total of number items. The random agreement (pe) is the probability that the annotators agreed on either of the possible annotations. Using the observed and random agreement the Cohen's kappa can be calculated. The coefficient ranges from 0 to 1 and can be interpreted as shown in table \ref{tab:cohenkappainterpret}.
-
-\begin{table}[]
-\begin{tabular}{|P{2cm}|P{4cm}|}
-\hline
-\rowcolor{Gray}
-Cohen's Kappa & Agreement \\ \hline
-0 & Agreement equivalent to chance \\ \hline
-0.10 - 0.20 & Slight \\ \hline
-0.21 - 0.40 & Fair \\ \hline
-0.41 - 0.60 & Moderate \\ \hline
-0.61 - 0.80 & Substantial \\ \hline
-0.81 - 0.99 & Near perfect \\ \hline
-1 & Perfect \\ \hline
-\end{tabular}
-\caption{Cohen's kappa agreement interpretation.}
-\label{tab:cohenkappainterpret}
-\end{table}
-
-Since Cohen's kappa takes into account the disagreement but not the degree of disagreement a modified version of Cohen's kappa can be used which is the weighted Cohen's kappa (cohen 1968). This can be applied well if an ordinal scale is used for the ratings. Since the annotations of the data-set use an ordinal scale, the weighted Cohen's kappa can be applied. The weighted kappa is calculated with the use of a table containing weights which measure the degree of disagreement. This can be linear or quadratic. Table \ref{tab:cohenkappa} shows the results of the weighted Cohen's kappa alongside the unweighted versions. 
-
-Overall, every dimension shows a moderate agreement when quadratic weighting is applied. Further, for every dimension and weight the null hypothesis is rejected, where the null hypothesis is that the observed agreement is accidental. Therefore it is safe to say the inter-rater reliability is higher than chance level. 
+To measure the inter-rater reliability between the two annotators the Cohen's kappa coefficient was calculated. This coefficient is considered more robust as it takes into account the occurrence of an agreement by chance. The resulting coefficient will determine whether the agreement is accidental or not. Table \ref{tab:cohenkappa} shows the results of the Cohen's kappa calculations. The observed agreement (po) is the number of agreements divided by the total of number items. The random agreement (pe) is the probability that the annotators agreed on either of the possible annotations. Using the observed and random agreement the Cohen's kappa can be calculated. The coefficient ranges from 0 to 1 and can be interpreted as shown in table \ref{tab:cohenkappainterpret}.
 
 \begin{table*}[]
 \begin{tabular}{|l|l|r|r|r|P{1.3cm}|P{2cm}|P{2cm}|}
@@ -70,7 +50,27 @@ Overall, every dimension shows a moderate agreement when quadratic weighting is 
 \caption{Inter rater agreement results. po: observed agreement, pe: random agreement, Kappa: Cohen's Kappa.}
 \label{tab:cohenkappa}
 \end{table*}
-The data was then split up in a train set of 660 video clips and a test set of 300 video clips to be used for model training, optimization and testing. 
+
+\begin{table}[]
+\begin{tabular}{|P{2cm}|P{4cm}|}
+\hline
+\rowcolor{Gray}
+Cohen's Kappa & Agreement \\ \hline
+0 & Agreement equivalent to chance \\ \hline
+0.10 - 0.20 & Slight \\ \hline
+0.21 - 0.40 & Fair \\ \hline
+0.41 - 0.60 & Moderate \\ \hline
+0.61 - 0.80 & Substantial \\ \hline
+0.81 - 0.99 & Near perfect \\ \hline
+1 & Perfect \\ \hline
+\end{tabular}
+\caption{Cohen's kappa agreement interpretation.}
+\label{tab:cohenkappainterpret}
+\end{table}
+
+Since Cohen's kappa takes into account the disagreement but not the degree of disagreement a modified version of Cohen's kappa can be used which is the weighted Cohen's kappa (\cite{cohen1968weighted}). This can be applied well if an ordinal scale is used for the ratings. Since the annotations of the data-set use an ordinal scale, the weighted Cohen's kappa can be applied. The weighted kappa is calculated with the use of a table containing weights which measure the degree of disagreement. This can be linear or quadratic. Table \ref{tab:cohenkappa} shows the results of the weighted Cohen's kappa alongside the unweighted versions. 
+
+Overall, every dimension shows a moderate agreement when quadratic weighting is applied. Further, for every dimension and weight the null hypothesis is rejected, where the null hypothesis is that the observed agreement is accidental. Therefore it is safe to say the inter-rater reliability is higher than chance level. The data was then split up in a train set of 660 video clips and a test set of 300 video clips to be used for model training, optimization and testing. 
 
 \subsection{Video Feature Extraction}\label{subsection:featureextraction}
 To train our models we use video features that are extracted from the 15 second YouTube clips provided by the ChaLearn Competition. The features are facial features which are extracted over the entire video clip. These features are summarized by functionals. First, the faces were detected and then aligned using the Supervised Descent Method (\cite{xiong2013supervised}). Every detected face is rotated using the roll angle which is estimated from the eye corners. Also, there are 49 landmarks located on each face to which a 20\% margin is applied to corp the image to a size of 64 x 64 pixels. Image-level features are extracted from a convolutional neural network which was trained for emotion recognition. This network is a pre-trained VGG-Face network (\cite{kaya2017video}), which is optimized for large data-sets. The final layer of the network was changed to a 7-dimensional emotion recognition layer. The resulting network was then fine-tunes using the FER-2013 data-set (\cite{goodfellow2015challenges}), which contains over 30,000 images. The final trained network has 37 layers from which the 33rd response was used. This descriptor has 4096 dimensions which were then summarized using four statistical functions. Those functions were the mean, standard deviation, slope and offset from a linear polynomial.
