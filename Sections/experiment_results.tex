@@ -2,7 +2,7 @@ This section will provide, analyze and discuss the results of the annotations an
 \break
 
 \subsection{Annotation Analysis}
-As described in the methodology, 960 video clips of the data-set were annotated for the Big Five personality traits, two mood primitives (valence and arousal), likeability, background music and the interview variable. The personality and interview dimensions were annotated using Amazon Mechanical Turk. All dimensions, with the exception of background music, were annotated for apparent presence or absence. The interview variable indicates whether the annotator would invite the subject to an interview or not. Table \ref{tab:personcount} and table \ref{tab:goldcount} show the number of annotations for each class and dimension. 
+As described in the methodology, 960 video clips of the data-set were annotated for the Big Five personality traits, two mood primitives (valence and arousal), likeability, background music and the interview variable. The personality and interview dimensions were annotated using Amazon Mechanical Turk. All dimensions, with the exception of background music, were annotated for apparent presence or absence. The interview variable indicates whether the annotator would invite the subject to an interview or not. Table \ref{tab:selfcount} and Table \ref{tab:goldcount} show the number of annotations for each class and dimension. 
 
 The apparent personality trait and interview dimensions were post-processed to create cardinal scores for each video clip (\cite{escalante2018explaining}). These scores were also binarized by taking the mean of each dimension and assigning a 2 if the score was equal or higher than the mean and assigning a 1 if the score was lower than the mean. Table \ref{tab:personcount} shows the number of annotations based on the binarized data-set. 
 
@@ -60,7 +60,7 @@ Total: & 960 & 960 & 960 & 960 & 960 & 960 \\ \hline
 
 \subsection{Statistical Relationships}
 
-Some interesting statistical experiments can be done regarding the statistical relationship of the mood primitives and likeability dimensions and the interview invitation. For these experiments we will use the cardinal values of the interview variable and the self annotations of the arousal, valence and likeability dimensions. Three box-plots are created and are shown in figure \ref{fig:boxplotval}, figure \ref{fig:boxplotaro} and figure \ref{fig:boxplotlike}. For these box-plots the y-axis indicates the cardinal interview invitation variable, where a higher score means they would be more likely to be invited for an interview. The x-axis indicate the three ordinal classes of the arousal, valence or likeability dimensions. The orange horizontal line in the box-plots indicate the mean. As the plots show, there is a upwards trend in the mean of all three box-plots. Meaning that if the subject is classified in the higher class, they would be more likely to have a higher score in the interview invitation variable.
+Some interesting statistical experiments can be done regarding the statistical relationship of the mood primitives and likeability dimensions and the interview invitation. For these experiments we will use the cardinal values of the interview variable and the self annotations of the arousal, valence and likeability dimensions. Three box-plots are created and are shown in Figure \ref{fig:boxplotval}, Figure \ref{fig:boxplotaro} and Figure \ref{fig:boxplotlike}. For these box-plots the y-axis indicates the cardinal interview invitation variable, where a higher score means they would be more likely to be invited for an interview. The x-axis indicate the three ordinal classes of the arousal, valence or likeability dimensions. The orange horizontal line in the box-plots indicate the mean. As the plots show, there is a upwards trend in the mean of all three box-plots. Meaning that if the subject is classified in the higher class, they would be more likely to have a higher score in the interview invitation variable.
 
 \begin{figure}[h]
   \centering
@@ -83,28 +83,28 @@ Some interesting statistical experiments can be done regarding the statistical r
   \label{fig:boxplotlike}
 \end{figure}
 
-However, to see if there is a correlation between the interview variable and mood and likeability variables we must look at the Spearman's Rank-Order Correlation coefficient. This coefficient is used to calculate correlation for ordinal categorical variables. To calculate this coefficient we will be using the binarized data-set of the interview variable. The coefficient is calculated as follows: \(\rho = \frac{cov(x,y)}{\sigma_x \sigma_y}\), where \(cov(x,y)\) is the covariance of the variables and \(\rho\) is the Pearson correlation coefficient. Table \ref{tab:spearman} shows the correlation and p value between the three dimensions and the binarized interview variable. The results show a low p value for all dimensions, with every p value being close to 0. This means that the null hypothesis should be rejected, where the null hypothesis is that two sets of data are uncorrelated. By rejected the null hypothesis we can conclude that the sets of data are not uncorrelated, however it does not prove that they are correlated. If we look at table \ref{tab:spearman} we can see that the correlation values are between 0.2 and 0.4. For the arousal dimension this means that the strength of the correlation is small, while for the valence and likeability dimensions there is medium strong correlation. A perfect correlation would be indicated with a value of 1 or -1 (for a negative correlation). Typically, a correlation is considered strong if the correlation coefficient value is higher than 0.7 or lower than -0.7. 
+However, to see if there is a correlation between the interview variable and mood and likeability variables we must look at the Spearman's Rank-Order Correlation coefficient. This coefficient is used to calculate correlation for ordinal categorical variables. To calculate this coefficient we will be using the binarized data-set of the interview variable. The coefficient is calculated as follows: \(r_{s} = 1 - \frac{6\sum d_{i}^2}{n(n^2-1)}\), where \(d_i\) is the difference between the two ranks of each observation and \(n\) is the number of observations. Table \ref{tab:spearman} shows the correlation and p value between the three dimensions and the binarized interview variable. The results show a low p value for all dimensions, with every p value being close to 0. This means that the null hypothesis should be rejected, where the null hypothesis is that two sets of data are uncorrelated. By rejected the null hypothesis we can conclude that the sets of data are not uncorrelated, however it does not prove that they are strongly correlated. If we look at Table \ref{tab:spearman} we can see that the correlation values are between 0.2 and 0.4. For the arousal dimension this means that the strength of the correlation is small, while for the valence and likeability dimensions there is medium strong correlation. A perfect correlation would be indicated with a value of 1 or -1 (for a negative correlation). Typically, a correlation is considered strong if the correlation coefficient value is higher than 0.7 or lower than -0.7. 
 
 \begin{table}[h]
 \begin{tabular}{|P{1cm}|r|r|r|}
 \hline
 \rowcolor{Gray} 
  & \multicolumn{1}{l|}{Arousal} & \multicolumn{1}{l|}{Valence} & \multicolumn{1}{l|}{Likeability} \\ \hline
-Correlation & 0.296 & 0.204 & 0.395 \\ \hline
-P Value & 6.51E-21 & 1.76E-10 & 3.09E-37 \\ \hline
+Cor & 0.296 & 0.204 & 0.395 \\ \hline
+p & 6.51E-21 & 1.76E-10 & 3.09E-37 \\ \hline
 \end{tabular}
-\caption{Results of the Spearman Rank Correlation coefficient calculations}
+\caption{Results of the Spearman Rank Correlation coefficient calculations. Cor: Spearman’s Rank-Order Correlation coefficient, p: statistical difference}
 \label{tab:spearman}
 \end{table}
 
 \subsection{Mood and Likeability Model Experiments}\label{subsection:moodlikeexp}
-In this section we will discuss the performance of the models that are trained using the mood and likeability dimensions and the extracted video features. As stated in the methodology the data-set was split into a training set of 660 rows and a test set of 300 rows. Both the self annotation and the gold standard annotations were used for training the classifiers. Both the SVM and ELM algorithms as described in section \ref{subsection:classificaiton} were used to the train models. Table \ref{tab:lkelm} shows the results in UAR of the trained ELM models. A linear kernel was used to train these models. Also, hyperparameters, like the C parameter, were optimized to achieve the best scores. The highest score of each dimension is highlighted bold. The normalization column refers to what type of normalization was applied to the feature set. "NN" stands for no normalization, "ZN" for z normalization and "L2" stands for l2 normalization. These are the normalization techniques as described in section \ref{subsection:normalization}. As the results show, the best results of each dimension is higher than 33\%. Which indicates that the models are more accurate than chance level. Chance level is 33\% in the case of our data-set as the dimensions are labeled with three different classes. Further, the results for the weighted ELM are higher than non-weighted ELM for all dimensions. Also, the gold standard annotation dimensions score higher than the self annotated labels. This implies that more annotators are needed for the same data to increase the performance of the models. 
+In this section, we will discuss the performance of the models that are trained using the mood and likeability dimensions and the extracted video features. As stated in the methodology, the data-set was split into a training set of 660 instances and a test set of 300 instances. Both the self annotation and the gold standard annotations were used for training the classifiers. Both the SVM and ELM algorithms as described in section \ref{subsection:classificaiton} were used to the train models. Table \ref{tab:lkelm} shows the results in UAR of the trained ELM models. A linear kernel was used to train these models. Also, hyperparameters, like the C parameter, were optimized to achieve the best scores. The highest score of each dimension is highlighted bold. The normalization column refers to what type of normalization was applied to the feature set. ``NN`` stands for no normalization, ``ZN`` for z normalization and ``L2`` stands for l2 normalization. These are the normalization techniques as described in section \ref{subsection:normalization}. As the results show, the best results of each dimension is higher than 33\%, which indicates that the models are more accurate than chance level. Chance level is 33\% in the case of our data-set as the dimensions are labeled with three classes. Further, the results for the weighted ELM are higher than non-weighted ELM for all dimensions. Also, the gold standard annotation dimensions score higher than the self annotated labels. This implies that more annotators are needed for the same data to increase the performance of the models. 
 
 \begin{table*}[h]
 \begin{tabular}{|l|P{1.5cm}|r|r|r|r|r|r|}
 \hline
 \rowcolor{Gray}
-\textbf{Weighted} & \textbf{Normalization} & \multicolumn{1}{l|}{\textbf{self\_aro}} & \multicolumn{1}{l|}{\textbf{gold\_aro}} & \multicolumn{1}{l|}{\textbf{self\_val}} & \multicolumn{1}{l|}{\textbf{gold\_val}} & \multicolumn{1}{l|}{\textbf{self\_like}} & \multicolumn{1}{l|}{\textbf{gold\_like}} \\ \hline
+\textbf{Weighted} & \textbf{Norm} & \multicolumn{1}{l|}{\textbf{self\_aro}} & \multicolumn{1}{l|}{\textbf{gold\_aro}} & \multicolumn{1}{l|}{\textbf{self\_val}} & \multicolumn{1}{l|}{\textbf{gold\_val}} & \multicolumn{1}{l|}{\textbf{self\_like}} & \multicolumn{1}{l|}{\textbf{gold\_like}} \\ \hline
 \multirow{4}{*}{\textbf{No}} & \textbf{NN} & 39.79\% & 42.67\% & 47.91\% & 47.78\% & 38.47\% & 42.61\% \\ \cline{2-8} 
  & \textbf{ZN} & 43.76\% & 49.88\% & 49.11\% & 46.21\% & 51.56\% & 49.11\% \\ \cline{2-8} 
  & \textbf{L2} & 39.80\% & 42.49\% & 47.53\% & 47.19\% & 39.84\% & 43.25\% \\ \cline{2-8} 
@@ -114,11 +114,11 @@ In this section we will discuss the performance of the models that are trained u
  & \textbf{L2} & 38.11\% & 51.08\% & 49.36\% & \textbf{56.77\%} & 52.18\% & \textbf{53.49\%} \\ \cline{2-8} 
  & \textbf{ZN+L2} & 43.91\% & 52.37\% & 50.05\% & 52.38\% & 53.08\% & 50.35\% \\ \hline
 \end{tabular}
-\caption{Linear Kernel Extreme Learning Machine model performance results expressed in UAR. Highest score highlighted in bold. aro: arousal, val: valence, like: likeability.}
+\caption{Linear Kernel Extreme Learning Machine model performance results expressed in UAR. Highest score highlighted in bold. Norm: normalization, aro: arousal, val: valence, like: likeability.}
 \label{tab:lkelm}
 \end{table*}
 
-The results of the SVM models trained using the extracted video features are shown in table \ref{tab:svm}. Again, the results are expressed in their UAR, and the highest score for each dimension is highlighted in bold. The results show moderately good performance. The highest scores for each dimension is higher than chance level, but they are slightly worse than the ELM models. 
+The results of the SVM models trained using the extracted video features are shown in Table \ref{tab:svm}. Again, the results are expressed in their UAR, and the highest score for each dimension is highlighted in bold. The results show moderately good performance. The highest scores for each dimension is higher than chance level, but they are slightly worse than the ELM models. 
 
 \begin{table*}[h]
 \begin{tabular}{|l|r|r|r|r|r|r|}
@@ -138,7 +138,7 @@ Other types of kernels, like the RBF and sigmoid kernel, were explored for the E
 
 \subsection{Personality Trait Experiments}\label{subsection:personexp}
 
-In this section, the ELM models are trained to predict the big five personality traits and the interview invitation variable. For this experiment, the same 660 training and 300 test features were used as the mood primitives and likeability model experiments. Also, the binarized version of the big five personality trait and interview variables were used to train the model. The experiment UAR scores are shown in table \ref{tab:kelmperson}, and the highest score for each dimension is highlighted in bold. As the results show, the scores are substantially better than the scores of the mood and likeability dimensions. The best UAR scores are higher than 60\% and some are over 70\%. Overall, the Extraversion and Openness to Experience dimensions achieve the highest UAR scores in our trained models. 
+In this section, the ELM models are trained to predict the big five personality traits and the interview invitation variable. For this experiment, the same 660 training and 300 test instances were used as the mood primitives and likeability model experiments. Also, the binarized version of the big five personality trait impression and interview variables were used to train the model. The experiment UAR scores are shown in Table \ref{tab:kelmperson}, and the highest score for each dimension is highlighted in bold. As the results show, the scores are substantially better than the scores of the mood and likeability dimensions. The best UAR scores are higher than 60\% and some are over 70\%. Overall, the Extraversion and Openness to Experience dimensions achieve the highest UAR scores in our trained models. 
 
 \begin{table*}[h]
 \begin{tabular}{|l|l|r|r|r|r|r|r|}
@@ -159,7 +159,7 @@ Weighted & Normalization & \multicolumn{1}{l|}{AGRE} & \multicolumn{1}{l|}{CONS}
 \end{table*}
 
 \subsection{3 Fold Cross Validation}\label{subsection:3foldcv}
-The results of the experiments in sections \ref{subsection:moodlikeexp} and \ref{subsection:personexp} show that the models can reach an accuracy level of around 55\% for the mood and likeability dimensions and upward of 72\% for the binary personality trait and interview dimensions. These models were optimized by utilizing weighted models, feature normalization and hyperparamater optimization. During the process of hyperparameter optimization parameters like the C value are optimized to increase performance. However, this means that the model is optimized for the test set, as this set is used to compute the performance score. This means that the performance of the model might not be optimal. To solve this problem the k fold cross validation method can be applied. In our case we did a 3 fold cross validation which means that our original 660 instances of our training set was split up in a new train set of 440 samples and test set of 220 samples. The split was done three times to train and test three models per dimension. Then the optimal hyperparameters were chosen based on the highest performance scores of each model. The prediction output of the test sets were combined to create a data-set of 660 high level features. These instances were also compared with the original labels to compute the UAR, which can be found in table \ref{tab:3foldtestuar} in the column of "3 Fold CV". "Weighted" refers to if the weighted version of the ELM classifier was used or not. Next, the last 300 video features were deployed on the optimal models that were trained during the 3 Fold Cross Validation. This resulted in 3 times 300 predictions per dimension. Using majority voting, or choosing the medium class in case of a draw, the final prediction set was constructed for each dimension. These predictions were also compared to the original labels to compute the UAR. The scores can be found in table \ref{tab:3foldtestuar} in the "Testset" column. Both L2 and ZN normalization was applied to the video feature set to train the models in the cross validations. 
+The results of the experiments in sections \ref{subsection:moodlikeexp} and \ref{subsection:personexp} show that the models can reach an accuracy level of around 55\% for the mood and likeability dimensions and upward of 72\% for the binary personality trait and interview dimensions. These models were optimized by utilizing weighted models, feature normalization and hyperparamater optimization. During the process of hyperparameter optimization parameters like the C value are optimized to increase performance. However, this means that the model is optimized for the test set, as this set is used to compute the performance score. This means that the real-life performance of the model may not be assessed reliably. To solve this problem the k-fold cross validation method can be applied. In our case, we did a 3-fold cross validation, which means that our original 660 instances of our training set was split up in a new train set of 440 samples and test set of 220 samples. The split was done three times to train and test three models per dimension. Then the optimal hyperparameters were chosen based on the highest performance scores of each model on the respective validation set. The prediction output of the test sets were combined to create a data-set of 660 high level features. These instances were also compared with the original labels to compute the UAR, which can be found in Table \ref{tab:3foldtestuar} in the column of ``3-Fold CV``. ``Weighted`` refers to if the weighted version of the ELM classifier was used or not. Next, the last 300 video features were deployed on the optimal models that were trained during the 3 Fold Cross Validation. This resulted in 3 times 300 predictions per dimension. Using majority voting, or choosing the medium class in case of a draw, the final prediction set was constructed for each dimension. These predictions were also compared to the original labels to compute the UAR. The scores can be found in Table \ref{tab:3foldtestuar} in the ``Test set`` column. Both L2 and ZN normalization was applied to the video feature set to train the models in the cross validations. 
 
 
 
@@ -167,24 +167,24 @@ The results of the experiments in sections \ref{subsection:moodlikeexp} and \ref
 \begin{tabular}{|l|r|r|r|r|}
 \hline
 \rowcolor{Gray}
- & \multicolumn{2}{l|}{3 Fold CV} & \multicolumn{2}{l|}{Test set} \\ \hline
+ & \multicolumn{2}{l|}{3-Fold CV} & \multicolumn{2}{l|}{Test set} \\ \hline
 Weighted & \multicolumn{1}{l|}{Yes} & \multicolumn{1}{l|}{No} & \multicolumn{1}{l|}{Yes} & \multicolumn{1}{l|}{No} \\ \hline
-INTER & 65.75\% & 67.05\% & 66.87\% & 66.75\% \\ \hline
-AGRE & 62.67\% & 61.68\% & 59.35\% & 58.95\% \\ \hline
-OPEN & 67.64\% & 68.23\% & 70.34\% & 67.65\% \\ \hline
-NEUR & 65.71\% & 66.29\% & 60.38\% & 59.36\% \\ \hline
-EXTRA & 70.62\% & 70.07\% & 71.02\% & 69.35\% \\ \hline
-CONST & 65.20\% & 65.36\% & 59.39\% & 58.56\% \\ \hline
-ARO & 47.67\% & 41.38\% & 44.25\% & 37.26\% \\ \hline
-VAL & 56.17\% & 52.74\% & 43.38\% & 37.21\% \\ \hline
-LIKE & 45.97\% & 43.16\% & 43.95\% & 42.54\% \\ \hline
+INTER & 65.75 & 67.05 & 66.87 & 66.75 \\ \hline
+AGRE & 62.67 & 61.68 & 59.35 & 58.95 \\ \hline
+OPEN & 67.64 & 68.23 & 70.34 & 67.65 \\ \hline
+NEUR & 65.71 & 66.29 & 60.38 & 59.36 \\ \hline
+EXTRA & 70.62 & 70.07 & 71.02 & 69.35 \\ \hline
+CONST & 65.20 & 65.36 & 59.39 & 58.56 \\ \hline
+ARO & 47.67 & 41.38 & 44.25 & 37.26 \\ \hline
+VAL & 56.17 & 52.74 & 43.38 & 37.21 \\ \hline
+LIKE & 45.97 & 43.16 & 43.95 & 42.54 \\ \hline
 \end{tabular}
-\caption{The UAR scores of the 3 Fold Cross Validation experiment and the predicted test set using ELM.}
+\caption{The UAR (\%) scores of the 3 Fold Cross Validation experiment and the predicted test set using ELM.}
 \label{tab:3foldtestuar}
 \end{table}
 
 \subsection{Explainability Analysis and Decision Trees}
-The performance results of the trained models are overall good, as they show UAR scores of around 65\%. Now to explain the predictions made by our model we will be training and visualizing a decision tree. However, a decision tree trained with over 16000 video features would result in a tree with over 2\textsuperscript{16000} branches. Therefore, to increase explainability, we will choose 5 to 8 high level features to model the interview invitation variable. We will use the predictions of the 3 fold cross validation models, as described in section \ref{subsection:3foldcv}, as the high level features. Meaning, the openness, conscientiousness, extroversion, agreeableness, neuroticism, valence, arousal and likeability predictions were used as the high level features. Meanwhile, the interview dimension was used as the label. 
+The performance results of the trained models are overall good, as they show UAR scores of around 65\%. Now to explain the predictions made by our model we will be training and visualizing a decision tree. However, a decision tree trained with over 16000 video features may theoretically result in a tree with over 2\textsuperscript{16000} leaves in the worst case, given sufficient amount of instances. Therefore, to ensure interpretability, we will choose 5 to 8 high level features to model the interview invitation variable. We will use the predictions of the 3 fold cross validation models, as described in section \ref{subsection:3foldcv}, as the high level features. Meaning, the openness, conscientiousness, extroversion, agreeableness, neuroticism, valence, arousal and likeability predictions were used as the high level features. Meanwhile, the interview dimension was used as the label. 
 
 Table \ref{tab:dtuar} show the UAR scores of the trained decision tree models for each dimension combination. Personality refers to the big five personality traits, while weighted and unweighted refers to the type of prediction set that was used. Note that since the predicted dimension is binary, the chance level is 50\%. To increase the explainability and interpretability of the decision tree, the mood and likability dimensions were, like the personality traits, also binarized. The mood and likeability dimensions had few samples for the low class so the decision was to combine them with the medium class.
 
@@ -193,7 +193,7 @@ Table \ref{tab:dtuar} show the UAR scores of the trained decision tree models fo
 \hline
 \rowcolor{Gray}
  & \multicolumn{1}{l|}{Weighted} & \multicolumn{1}{l|}{Unweighted} \\ \hline
-Personality & \cellcolor[HTML]{86CEAB}63.86\% & \cellcolor[HTML]{D1EDDF}63.87\% \\ \hline
+Personality (Big 5 train impression predictions)& \cellcolor[HTML]{86CEAB}63.86\% & \cellcolor[HTML]{D1EDDF}63.87\% \\ \hline
 Personality + valence & \cellcolor[HTML]{CBEADB}62.83\% & \cellcolor[HTML]{FCFEFD}63.20\% \\ \hline
 Personality + arousal & \cellcolor[HTML]{E3F4EC}62.47\% & \cellcolor[HTML]{83CDA9}65.10\% \\ \hline
 Personality + likeability & 61.68\% & 64.80\% \\ \hline
@@ -208,16 +208,16 @@ Personality + valence + arousal + likeability & \cellcolor[HTML]{5CBD8D}64.50\% 
 
 As the results indicate for the unweighted predictors, adding arousal to the dimensions increases the performance score of the models, except when adding the likeability dimension. For the weighted prediction set, the likeability and arousal combination was the best scorer. The overall top scorer, with a UAR score close to 66\%, used the unweighted prediction set of the personality traits, valence and arousal dimensions. 
 
-Figure \ref{fig:decisiontree} is the visualization of the decision tree which has the highest UAR score. The constructed decision tree can be interpreted as follows: a node will contain a high level feature, agreeableness for example. Then traversing to the left of this node means the feature scored low while traversing to the right branch means the feature scored high. The leaf nodes indicate the predicted class, in our case whether or not a person is invited to a job interview or not. Neuroticism correlates negatively with the interview variable, therefore it is represented with its opposite; non-neuroticism. In the decision tree this means that the right branch indicates a high score in non-neuroticism. As the tree shows, openness to experience is the most important feature as it is the top level node. 
+Figure \ref{fig:decisiontree} is the visualization of the decision tree that has the highest UAR score. The constructed decision tree can be interpreted as follows: a node will contain a high level feature, agreeableness for example. Then traversing to the left of this node means the feature scored low while traversing to the right branch means the feature scored high. The leaf nodes indicate the predicted class, in our case whether or not a person is invited to a job interview. Neuroticism correlates negatively with the interview variable, therefore it is represented with its opposite; non-neuroticism. In the decision tree, this means that the right branch indicates a high score in non-neuroticism. As the tree shows, openness to experience is the most important feature as it is the top level node. 
 
 \begin{figure*}[h]
   \centering
   \includesvg[width=\textwidth]{Images/decision_tree.svg}
-  \caption{Decision Tree of the personality traits, arousal and valence dimensions, predicting the interview invitation variable.}
+  \caption{Decision Tree of the personality traits, arousal and valence dimensions, predicting the interview invitation variable. Right branches are always labeled as HIGH, while left branches are always labeled as LOW.}
   \label{fig:decisiontree}
 \end{figure*}
 
-To further examine feature importance a ridge classifier model was trained using the same high level feature prediction set that was used for the decision tree. Figures \ref{fig:featureimp_weighted} and \ref{fig:featureimp_unweighted} show the distribution of the feature importance as modeled by the ridge classifier. As both distributions show, the agreeableness, openness and conscientiousness dimensions stand out as the most important features. This is comparable to the decision tree in figure \ref{fig:decisiontree}, as the three top level nodes contain the same dimensions, implying their importance.  
+To further examine feature importance a ridge classifier model was trained using the same high level feature prediction set that was used for the decision tree. Figures \ref{fig:featureimp_weighted} and \ref{fig:featureimp_unweighted} show the distribution of the feature importance as modeled by the ridge classifier. As both distributions show, the agreeableness, openness and conscientiousness dimensions stand out as the most important features. This is comparable to the decision tree in Figure \ref{fig:decisiontree}, as the three top level nodes contain the same dimensions, implying their importance.  
 
 \begin{figure}[h]
   \centering
